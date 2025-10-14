@@ -6,20 +6,28 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="font-bold text-xl">CodeRisk</div>
           <div className="flex gap-6 items-center">
-            <a href="#" className="text-sm hover:text-gray-600 transition-colors">
+            <a href="https://github.com/rohankatakam/coderisk-go#readme" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-gray-600 transition-colors">
               Docs
             </a>
+            <a href="/pricing" className="text-sm hover:text-gray-600 transition-colors">
+              Pricing
+            </a>
+            <a href="/open-source" className="text-sm hover:text-gray-600 transition-colors">
+              Open Source
+            </a>
             <a
-              href="https://github.com"
+              href="https://github.com/rohankatakam/coderisk-go"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm hover:text-gray-600 transition-colors"
             >
               GitHub
             </a>
-            <button className="bg-black text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors">
-              Get Started
-            </button>
+            <a href="#install">
+              <button className="bg-black text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors">
+                Install CLI
+              </button>
+            </a>
           </div>
         </div>
       </nav>
@@ -29,54 +37,96 @@ export default function Home() {
         <div className="text-center space-y-8">
           {/* Main Headline */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
-            Trust infrastructure for
+            Open Source AI Code
             <br />
-            AI-generated code
+            Risk Assessment
           </h1>
 
           {/* Subheadline */}
           <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
             The pre-flight check for developers. Know if your code is safe before you commit.
+            <br />
+            <span className="text-lg">Free CLI, optional cloud platform.</span>
           </p>
+
+          {/* Badges */}
+          <div className="flex gap-3 justify-center items-center pt-2">
+            <a
+              href="https://github.com/rohankatakam/coderisk-go/blob/main/LICENSE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-green-200 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"/>
+              </svg>
+              MIT Licensed
+            </a>
+            <a
+              href="https://github.com/rohankatakam/coderisk-go"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+              GitHub
+            </a>
+          </div>
 
           {/* CTA Buttons */}
           <div className="flex gap-4 justify-center items-center pt-4">
-            <button className="bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors">
-              Start Free Trial
-            </button>
-            <button className="border border-gray-300 px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition-colors">
-              View Demo
-            </button>
+            <a href="#install">
+              <button className="bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors">
+                Install CLI
+              </button>
+            </a>
+            <a href="https://github.com/rohankatakam/coderisk-go#readme" target="_blank" rel="noopener noreferrer">
+              <button className="border border-gray-300 px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition-colors">
+                View Docs
+              </button>
+            </a>
           </div>
 
           {/* Quick Start Command */}
           <div className="pt-8">
-            <div className="inline-block bg-gray-100 px-6 py-3 rounded-lg">
+            <div className="inline-block bg-gray-100 px-6 py-4 rounded-lg">
               <code className="text-sm font-mono text-gray-800">
-                npm install -g coderisk
+                brew tap rohankatakam/coderisk && brew install crisk
               </code>
             </div>
           </div>
         </div>
 
         {/* Key Features */}
-        <div className="grid md:grid-cols-3 gap-8 pt-24">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 pt-24">
           <div className="space-y-3">
-            <div className="text-2xl font-semibold">2-5 seconds</div>
-            <div className="text-gray-600">
-              Intelligent pre-commit checks that don't slow you down
+            <div className="text-2xl font-semibold">⚡ Fast</div>
+            <div className="text-sm font-semibold text-gray-800">2-5 seconds</div>
+            <div className="text-gray-600 text-sm">
+              Intelligent pre-commit analysis that doesn't slow you down
             </div>
           </div>
           <div className="space-y-3">
-            <div className="text-2xl font-semibold">&lt;3% false positives</div>
-            <div className="text-gray-600">
+            <div className="text-2xl font-semibold">✅ Accurate</div>
+            <div className="text-sm font-semibold text-gray-800">&lt;3% false positives</div>
+            <div className="text-gray-600 text-sm">
               Agentic graph search delivers accurate risk assessment
             </div>
           </div>
           <div className="space-y-3">
-            <div className="text-2xl font-semibold">Zero setup</div>
-            <div className="text-gray-600">
-              Works immediately after git clone, no configuration needed
+            <div className="text-2xl font-semibold">💰 Transparent</div>
+            <div className="text-sm font-semibold text-gray-800">$3-5/month (100 checks)</div>
+            <div className="text-gray-600 text-sm">
+              BYOK model - you control LLM spend, no markup
+            </div>
+          </div>
+          <div className="space-y-3">
+            <div className="text-2xl font-semibold">🔓 Open Source</div>
+            <div className="text-sm font-semibold text-gray-800">MIT Licensed</div>
+            <div className="text-gray-600 text-sm">
+              Self-hosted - full privacy, you control infrastructure
             </div>
           </div>
         </div>
@@ -114,6 +164,148 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Installation Instructions */}
+        <div id="install" className="pt-24 space-y-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-center">
+            Installation (17 minutes one-time per repo)
+          </h2>
+          <div className="bg-gray-50 rounded-lg p-8 space-y-4 max-w-2xl mx-auto">
+            <div className="space-y-2">
+              <div className="text-sm text-gray-600">Step 1: Install CLI (30 seconds)</div>
+              <code className="block bg-white px-4 py-3 rounded font-mono text-sm">
+                brew tap rohankatakam/coderisk<br/>brew install crisk
+              </code>
+            </div>
+            <div className="space-y-2">
+              <div className="text-sm text-gray-600">Step 2: Configure API key (30 seconds)</div>
+              <code className="block bg-white px-4 py-3 rounded font-mono text-sm">
+                crisk configure
+              </code>
+            </div>
+            <div className="space-y-2">
+              <div className="text-sm text-gray-600">Step 3: Start infrastructure (2 minutes) - REQUIRED</div>
+              <code className="block bg-white px-4 py-3 rounded font-mono text-sm">
+                docker compose up -d
+              </code>
+            </div>
+            <div className="space-y-2">
+              <div className="text-sm text-gray-600">Step 4: Initialize repository (10-15 minutes) - REQUIRED</div>
+              <code className="block bg-white px-4 py-3 rounded font-mono text-sm">
+                cd your-repo<br/>crisk init-local
+              </code>
+            </div>
+            <div className="space-y-2">
+              <div className="text-sm text-gray-600">Step 5: Check for risks (2-5 seconds)</div>
+              <code className="block bg-white px-4 py-3 rounded font-mono text-sm">
+                crisk check
+              </code>
+            </div>
+          </div>
+          <p className="text-center text-gray-600 text-sm max-w-xl mx-auto">
+            <strong>Requirements:</strong> OpenAI API key ($0.03-0.05/check) + Docker Desktop (free)
+            <br/>
+            <strong>Monthly cost:</strong> ~$3-5 for 100 checks (just OpenAI API)
+          </p>
+        </div>
+
+        {/* Open Source Section */}
+        <div className="pt-24 space-y-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-center">
+            Open Source
+          </h2>
+          <p className="text-xl text-gray-600 text-center max-w-2xl mx-auto">
+            CodeRisk CLI is <strong>open source</strong> (MIT License). Self-host for full privacy.
+          </p>
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <div className="border border-gray-200 rounded-lg p-6 space-y-3">
+              <h3 className="font-semibold text-lg">What's Included</h3>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>✅ CLI tool (full source code)</li>
+                <li>✅ Self-hosted mode (Docker + Neo4j)</li>
+                <li>✅ Core metrics (coupling, co-change, test coverage)</li>
+                <li>✅ Pre-commit hooks</li>
+                <li>✅ Graph database stack</li>
+              </ul>
+            </div>
+            <div className="border border-gray-200 rounded-lg p-6 space-y-3">
+              <h3 className="font-semibold text-lg">Requirements</h3>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>• OpenAI API key ($0.03-0.05/check)</li>
+                <li>• Docker Desktop (free)</li>
+                <li>• 17-minute one-time setup per repo</li>
+                <li>• <strong>Monthly cost: ~$3-5 for 100 checks</strong></li>
+              </ul>
+            </div>
+          </div>
+          <div className="text-center pt-4">
+            <a
+              href="https://github.com/rohankatakam/coderisk-go"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors mr-4"
+            >
+              View on GitHub
+            </a>
+            <a
+              href="https://github.com/rohankatakam/coderisk-go/blob/main/LICENSE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block border border-gray-300 px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition-colors"
+            >
+              Read License
+            </a>
+          </div>
+        </div>
+
+        {/* Cloud Platform Teaser */}
+        <div className="pt-24 space-y-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-center">
+            Need More? Try Cloud
+          </h2>
+          <p className="text-xl text-gray-600 text-center max-w-2xl mx-auto">
+            For teams wanting zero DevOps and advanced features
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="text-center space-y-2">
+              <div className="text-3xl">⚡</div>
+              <div className="font-semibold">Zero Setup</div>
+              <div className="text-sm text-gray-600">30 seconds, no Docker or init-local</div>
+            </div>
+            <div className="text-center space-y-2">
+              <div className="text-3xl">👥</div>
+              <div className="font-semibold">Team Collaboration</div>
+              <div className="text-sm text-gray-600">Shared graphs across your team</div>
+            </div>
+            <div className="text-center space-y-2">
+              <div className="text-3xl">🎯</div>
+              <div className="font-semibold">Pre-built Cache</div>
+              <div className="text-sm text-gray-600">React, Next.js instant access</div>
+            </div>
+            <div className="text-center space-y-2">
+              <div className="text-3xl">🔄</div>
+              <div className="font-semibold">Webhooks</div>
+              <div className="text-sm text-gray-600">Auto-update on push</div>
+            </div>
+          </div>
+          <div className="text-center space-y-4 pt-4">
+            <div className="text-lg">
+              <strong>Pricing:</strong> Self-hosted: $3-5/month (100 checks) • Cloud: $10-50/user/month
+            </div>
+            <div className="flex gap-4 justify-center">
+              <a href="/pricing">
+                <button className="bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors">
+                  Compare Plans
+                </button>
+              </a>
+              <a href="/pricing">
+                <button className="border border-gray-300 px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition-colors">
+                  Contact Sales
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+
         {/* Social Proof / Stats */}
         <div className="pt-24 text-center space-y-8">
           <div className="text-sm text-gray-500 uppercase tracking-wider">
@@ -130,19 +322,28 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-gray-200 mt-24">
         <div className="max-w-6xl mx-auto px-6 py-12">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-5 gap-8">
             <div>
               <div className="font-bold mb-4">CodeRisk</div>
               <div className="text-sm text-gray-600">
-                Trust infrastructure for AI-generated code
+                Open Source AI Code Risk Assessment
               </div>
             </div>
             <div>
               <div className="font-semibold mb-4 text-sm">Product</div>
               <div className="space-y-2 text-sm text-gray-600">
-                <div><a href="#" className="hover:text-black">Features</a></div>
-                <div><a href="#" className="hover:text-black">Pricing</a></div>
-                <div><a href="#" className="hover:text-black">Docs</a></div>
+                <div><a href="#install" className="hover:text-black">Installation</a></div>
+                <div><a href="/pricing" className="hover:text-black">Pricing</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk-go#readme" target="_blank" rel="noopener noreferrer" className="hover:text-black">Docs</a></div>
+              </div>
+            </div>
+            <div>
+              <div className="font-semibold mb-4 text-sm">Open Source</div>
+              <div className="space-y-2 text-sm text-gray-600">
+                <div><a href="https://github.com/rohankatakam/coderisk-go" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk-go/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="hover:text-black">Contributing</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk-go/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:text-black">License</a></div>
+                <div><a href="/open-source" className="hover:text-black">Open Core Model</a></div>
               </div>
             </div>
             <div>
@@ -157,13 +358,13 @@ export default function Home() {
               <div className="font-semibold mb-4 text-sm">Connect</div>
               <div className="space-y-2 text-sm text-gray-600">
                 <div><a href="#" className="hover:text-black">Twitter</a></div>
-                <div><a href="#" className="hover:text-black">GitHub</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk-go" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a></div>
                 <div><a href="#" className="hover:text-black">Discord</a></div>
               </div>
             </div>
           </div>
           <div className="mt-12 pt-8 border-t border-gray-200 text-sm text-gray-500 text-center">
-            © 2025 CodeRisk. All rights reserved.
+            © 2025 CodeRisk. Open Source (MIT License).
           </div>
         </div>
       </footer>
