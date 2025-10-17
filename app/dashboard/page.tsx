@@ -18,7 +18,12 @@ export default function DashboardPage() {
   })
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
+  const [validating, setValidating] = useState(false)
   const [message, setMessage] = useState('')
+  const [validationErrors, setValidationErrors] = useState<{
+    openai?: string
+    github?: string
+  }>({})
   const [showOpenAI, setShowOpenAI] = useState(false)
   const [showGitHub, setShowGitHub] = useState(false)
 
@@ -94,10 +99,65 @@ export default function DashboardPage() {
     }
   }
 
+  async function validateCredentials() {
+    try {
+      setValidating(true)
+      setValidationErrors({})
+      setMessage('')
+
+      const response = await fetch('/api/validate-keys', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          openai_api_key: credentials.openai_api_key,
+          github_token: credentials.github_token,
+        }),
+      })
+
+      const results = await response.json()
+
+      const errors: { openai?: string; github?: string } = {}
+
+      if (credentials.openai_api_key && !results.openai.valid) {
+        errors.openai = results.openai.error || 'Invalid API key'
+      }
+
+      if (credentials.github_token && !results.github.valid) {
+        errors.github = results.github.error || 'Invalid token'
+      }
+
+      setValidationErrors(errors)
+
+      if (Object.keys(errors).length === 0) {
+        setMessage('✅ All credentials are valid!')
+        setTimeout(() => setMessage(''), 3000)
+        return true
+      } else {
+        setMessage('⚠️ Some credentials are invalid')
+        return false
+      }
+    } catch (error) {
+      console.error('Validation error:', error)
+      setMessage('❌ Failed to validate credentials')
+      return false
+    } finally {
+      setValidating(false)
+    }
+  }
+
   async function saveCredentials() {
     try {
       setSaving(true)
       setMessage('')
+      setValidationErrors({})
+
+      // Validate first
+      const isValid = await validateCredentials()
+      if (!isValid && (credentials.openai_api_key || credentials.github_token)) {
+        setSaving(false)
+        return
+      }
+
       const supabase = await createClerkSupabaseClient(getToken)
 
       if (!user?.id) {
@@ -236,6 +296,14 @@ export default function DashboardPage() {
                   )}
                 </button>
               </div>
+              {validationErrors.openai && (
+                <p className="mt-2 text-sm text-red-600 flex items-center gap-1">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                  </svg>
+                  {validationErrors.openai}
+                </p>
+              )}
               <p className="mt-1 text-xs text-gray-500">
                 Used for AI-powered code analysis
               </p>
@@ -274,19 +342,34 @@ export default function DashboardPage() {
                   )}
                 </button>
               </div>
+              {validationErrors.github && (
+                <p className="mt-2 text-sm text-red-600 flex items-center gap-1">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                  </svg>
+                  {validationErrors.github}
+                </p>
+              )}
               <p className="mt-1 text-xs text-gray-500">
                 Used for repository access and analysis
               </p>
             </div>
 
-            {/* Save Button */}
-            <div className="pt-4">
+            {/* Validate & Save Buttons */}
+            <div className="pt-4 flex gap-3">
+              <button
+                onClick={validateCredentials}
+                disabled={validating || saving}
+                className="border border-gray-300 text-gray-700 px-6 py-2 rounded-md font-medium hover:bg-gray-50 transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed"
+              >
+                {validating ? 'Validating...' : 'Validate Keys'}
+              </button>
               <button
                 onClick={saveCredentials}
-                disabled={saving}
+                disabled={saving || validating}
                 className="bg-black text-white px-6 py-2 rounded-md font-medium hover:bg-gray-800 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
               >
-                {saving ? 'Saving...' : 'Save Credentials'}
+                {saving ? 'Saving...' : 'Validate & Save'}
               </button>
             </div>
           </div>
