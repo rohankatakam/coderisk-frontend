@@ -43,9 +43,9 @@ export default function DashboardPage() {
   async function checkGithubConnection() {
     try {
       // Check if user has GitHub connected via Clerk's external accounts
-      // Note: Client-side uses 'github', server-side uses 'oauth_github'
+      // Note: Client-side uses 'github' as the provider name
       const githubAccount = user?.externalAccounts?.find(
-        (account) => account.provider === 'github' || account.provider === 'oauth_github'
+        (account) => account.provider === 'github'
       )
 
       if (githubAccount) {
