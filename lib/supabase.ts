@@ -5,19 +5,12 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-// Create a Supabase client with Clerk session token
-export async function createClerkSupabaseClient(getToken: (options?: { template?: string }) => Promise<string | null>) {
-  const token = await getToken({ template: 'supabase' })
-
-  if (!token) {
-    throw new Error('No Clerk session token available')
-  }
-
+// Create a Supabase client with Clerk session token using native integration
+export async function createClerkSupabaseClient(getToken: () => Promise<string | null>) {
   return createClient(supabaseUrl, supabaseAnonKey, {
-    global: {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+    async accessToken() {
+      const token = await getToken()
+      return token ?? null
     },
   })
 }
