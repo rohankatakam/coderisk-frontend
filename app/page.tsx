@@ -1,3 +1,5 @@
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-black">
@@ -23,11 +25,16 @@ export default function Home() {
             >
               GitHub
             </a>
-            <a href="#install">
-              <button className="bg-black text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors">
-                Install CLI
-              </button>
-            </a>
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button className="bg-black text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors">
+                  Sign In
+                </button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
           </div>
         </div>
       </nav>
@@ -77,11 +84,18 @@ export default function Home() {
 
           {/* CTA Buttons */}
           <div className="flex gap-4 justify-center items-center pt-4">
-            <a href="#install">
-              <button className="bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors">
-                Install CLI
-              </button>
-            </a>
+            <SignedOut>
+              <a href="#install">
+                <button className="bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors">
+                  Install CLI
+                </button>
+              </a>
+            </SignedOut>
+            <SignedIn>
+              <a href="/dashboard" className="bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors">
+                Go to Dashboard
+              </a>
+            </SignedIn>
             <a href="https://github.com/rohankatakam/coderisk-go#readme" target="_blank" rel="noopener noreferrer">
               <button className="border border-gray-300 px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition-colors">
                 View Docs
