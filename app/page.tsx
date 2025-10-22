@@ -44,14 +44,14 @@ export default function Home() {
         <div className="text-center space-y-8">
           {/* Main Headline */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
-            Open Source AI Code
+            Automated Due Diligence
             <br />
-            Risk Assessment
+            Before You Commit
           </h1>
 
           {/* Subheadline */}
           <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
-            The pre-flight check for developers. Know if your code is safe before you commit.
+            Know who owns the code, what depends on it, and if similar changes failed before—all in 5 seconds.
             <br />
             <span className="text-lg">Free CLI, optional cloud platform.</span>
           </p>
@@ -116,31 +116,31 @@ export default function Home() {
         {/* Key Features */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 pt-24">
           <div className="space-y-3">
-            <div className="text-2xl font-semibold">⚡ Fast</div>
-            <div className="text-sm font-semibold text-gray-800">2-5 seconds</div>
+            <div className="text-2xl font-semibold">👤 Ownership</div>
+            <div className="text-sm font-semibold text-gray-800">Who to coordinate with</div>
             <div className="text-gray-600 text-sm">
-              Intelligent pre-commit analysis that doesn't slow you down
+              Shows who owns the code and who recently worked on it
             </div>
           </div>
           <div className="space-y-3">
-            <div className="text-2xl font-semibold">✅ Accurate</div>
-            <div className="text-sm font-semibold text-gray-800">&lt;3% false positives</div>
+            <div className="text-2xl font-semibold">🔗 Blast Radius</div>
+            <div className="text-sm font-semibold text-gray-800">What might break</div>
             <div className="text-gray-600 text-sm">
-              Agentic graph search delivers accurate risk assessment
+              Identifies files that depend on your changes
             </div>
           </div>
           <div className="space-y-3">
-            <div className="text-2xl font-semibold">💰 Transparent</div>
-            <div className="text-sm font-semibold text-gray-800">$3-5/month (100 checks)</div>
+            <div className="text-2xl font-semibold">🔄 Forgotten Updates</div>
+            <div className="text-sm font-semibold text-gray-800">What changes together</div>
             <div className="text-gray-600 text-sm">
-              BYOK model - you control LLM spend, no markup
+              Warns when you miss related files that usually change together
             </div>
           </div>
           <div className="space-y-3">
-            <div className="text-2xl font-semibold">🔓 Open Source</div>
-            <div className="text-sm font-semibold text-gray-800">MIT Licensed</div>
+            <div className="text-2xl font-semibold">⚠️ Incident History</div>
+            <div className="text-sm font-semibold text-gray-800">What failed before</div>
             <div className="text-gray-600 text-sm">
-              Self-hosted - full privacy, you control infrastructure
+              Prevents repeating past incidents with similar changes
             </div>
           </div>
         </div>
@@ -170,9 +170,9 @@ export default function Home() {
             </div>
             <div className="border border-gray-200 rounded-lg p-6">
               <div className="font-mono text-sm text-gray-600 mb-2">Step 3</div>
-              <div className="font-semibold mb-2">Get instant feedback</div>
+              <div className="font-semibold mb-2">Get due diligence report</div>
               <div className="text-gray-600 text-sm">
-                Receive clear, actionable insights about architectural risks and hidden dependencies
+                See who to coordinate with, what files might break, and if this caused incidents before
               </div>
             </div>
           </div>
@@ -235,10 +235,10 @@ export default function Home() {
               <h3 className="font-semibold text-lg">What's Included</h3>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>✅ CLI tool (full source code)</li>
-                <li>✅ Self-hosted mode (Docker + Neo4j)</li>
-                <li>✅ Core metrics (coupling, co-change, test coverage)</li>
-                <li>✅ Pre-commit hooks</li>
-                <li>✅ Graph database stack</li>
+                <li>✅ Ownership tracking (who to coordinate with)</li>
+                <li>✅ Blast radius analysis (what might break)</li>
+                <li>✅ Co-change detection (forgotten updates)</li>
+                <li>✅ Incident history (what failed before)</li>
               </ul>
             </div>
             <div className="border border-gray-200 rounded-lg p-6 space-y-3">
@@ -340,7 +340,7 @@ export default function Home() {
             <div>
               <div className="font-bold mb-4">CodeRisk</div>
               <div className="text-sm text-gray-600">
-                Open Source AI Code Risk Assessment
+                Automated due diligence before code review
               </div>
             </div>
             <div>
