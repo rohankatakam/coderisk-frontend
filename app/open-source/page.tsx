@@ -16,7 +16,7 @@ export default function OpenSource() {
               Open Source
             </a>
             <a
-              href="https://github.com/rohankatakam/coderisk-go"
+              href="https://github.com/rohankatakam/coderisk"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm hover:text-gray-600 transition-colors"
@@ -103,7 +103,7 @@ export default function OpenSource() {
 
             <div className="flex gap-4">
               <a
-                href="https://github.com/rohankatakam/coderisk-go"
+                href="https://github.com/rohankatakam/coderisk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors"
@@ -114,7 +114,7 @@ export default function OpenSource() {
                 View on GitHub
               </a>
               <a
-                href="https://github.com/rohankatakam/coderisk-go/blob/main/LICENSE"
+                href="https://github.com/rohankatakam/coderisk/blob/main/LICENSE"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block border border-gray-300 px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition-colors"
@@ -219,7 +219,7 @@ export default function OpenSource() {
           </div>
 
           <a
-            href="https://github.com/rohankatakam/coderisk-go/blob/main/CONTRIBUTING.md"
+            href="https://github.com/rohankatakam/coderisk/blob/main/CONTRIBUTING.md"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors"
@@ -254,7 +254,7 @@ export default function OpenSource() {
 
           <div className="mt-6">
             <a
-              href="https://github.com/rohankatakam/coderisk-go/blob/main/LICENSE"
+              href="https://github.com/rohankatakam/coderisk/blob/main/LICENSE"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:text-blue-800 font-medium"
@@ -273,7 +273,7 @@ export default function OpenSource() {
 
           <div className="grid md:grid-cols-3 gap-6">
             <a
-              href="https://github.com/rohankatakam/coderisk-go"
+              href="https://github.com/rohankatakam/coderisk"
               target="_blank"
               rel="noopener noreferrer"
               className="border border-gray-200 rounded-lg p-6 hover:border-gray-400 transition-colors"
@@ -317,7 +317,7 @@ export default function OpenSource() {
                 Install CLI
               </button>
             </a>
-            <a href="https://github.com/rohankatakam/coderisk-go" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/rohankatakam/coderisk" target="_blank" rel="noopener noreferrer">
               <button className="border border-gray-300 px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition-colors">
                 View on GitHub
               </button>
@@ -347,9 +347,9 @@ export default function OpenSource() {
             <div>
               <div className="font-semibold mb-4 text-sm">Open Source</div>
               <div className="space-y-2 text-sm text-gray-600">
-                <div><a href="https://github.com/rohankatakam/coderisk-go" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a></div>
-                <div><a href="https://github.com/rohankatakam/coderisk-go/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="hover:text-black">Contributing</a></div>
-                <div><a href="https://github.com/rohankatakam/coderisk-go/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:text-black">License</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="hover:text-black">Contributing</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:text-black">License</a></div>
                 <div><a href="/open-source" className="hover:text-black">Open Core Model</a></div>
               </div>
             </div>
@@ -365,7 +365,7 @@ export default function OpenSource() {
               <div className="font-semibold mb-4 text-sm">Connect</div>
               <div className="space-y-2 text-sm text-gray-600">
                 <div><a href="#" className="hover:text-black">Twitter</a></div>
-                <div><a href="https://github.com/rohankatakam/coderisk-go" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a></div>
                 <div><a href="#" className="hover:text-black">Discord</a></div>
               </div>
             </div>

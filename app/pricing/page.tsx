@@ -16,7 +16,7 @@ export default function Pricing() {
               Open Source
             </a>
             <a
-              href="https://github.com/rohankatakam/coderisk-go"
+              href="https://github.com/rohankatakam/coderisk"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm hover:text-gray-600 transition-colors"
@@ -329,9 +329,9 @@ export default function Pricing() {
             <div>
               <div className="font-semibold mb-4 text-sm">Open Source</div>
               <div className="space-y-2 text-sm text-gray-600">
-                <div><a href="https://github.com/rohankatakam/coderisk-go" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a></div>
-                <div><a href="https://github.com/rohankatakam/coderisk-go/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="hover:text-black">Contributing</a></div>
-                <div><a href="https://github.com/rohankatakam/coderisk-go/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:text-black">License</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="hover:text-black">Contributing</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:text-black">License</a></div>
                 <div><a href="/open-source" className="hover:text-black">Open Core Model</a></div>
               </div>
             </div>
@@ -347,7 +347,7 @@ export default function Pricing() {
               <div className="font-semibold mb-4 text-sm">Connect</div>
               <div className="space-y-2 text-sm text-gray-600">
                 <div><a href="#" className="hover:text-black">Twitter</a></div>
-                <div><a href="https://github.com/rohankatakam/coderisk-go" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a></div>
                 <div><a href="#" className="hover:text-black">Discord</a></div>
               </div>
             </div>

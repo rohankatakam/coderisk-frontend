@@ -8,7 +8,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="font-bold text-xl">CodeRisk</div>
           <div className="flex gap-6 items-center">
-            <a href="https://github.com/rohankatakam/coderisk-go#readme" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-gray-600 transition-colors">
+            <a href="https://github.com/rohankatakam/coderisk#readme" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-gray-600 transition-colors">
               Docs
             </a>
             <a href="/pricing" className="text-sm hover:text-gray-600 transition-colors">
@@ -18,7 +18,7 @@ export default function Home() {
               Open Source
             </a>
             <a
-              href="https://github.com/rohankatakam/coderisk-go"
+              href="https://github.com/rohankatakam/coderisk"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm hover:text-gray-600 transition-colors"
@@ -59,7 +59,7 @@ export default function Home() {
           {/* Badges */}
           <div className="flex gap-3 justify-center items-center pt-2">
             <a
-              href="https://github.com/rohankatakam/coderisk-go/blob/main/LICENSE"
+              href="https://github.com/rohankatakam/coderisk/blob/main/LICENSE"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-green-200 transition-colors"
@@ -70,7 +70,7 @@ export default function Home() {
               MIT Licensed
             </a>
             <a
-              href="https://github.com/rohankatakam/coderisk-go"
+              href="https://github.com/rohankatakam/coderisk"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors"
@@ -96,7 +96,7 @@ export default function Home() {
                 Go to Dashboard
               </a>
             </SignedIn>
-            <a href="https://github.com/rohankatakam/coderisk-go#readme" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/rohankatakam/coderisk#readme" target="_blank" rel="noopener noreferrer">
               <button className="border border-gray-300 px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition-colors">
                 View Docs
               </button>
@@ -253,7 +253,7 @@ export default function Home() {
           </div>
           <div className="text-center pt-4">
             <a
-              href="https://github.com/rohankatakam/coderisk-go"
+              href="https://github.com/rohankatakam/coderisk"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors mr-4"
@@ -261,7 +261,7 @@ export default function Home() {
               View on GitHub
             </a>
             <a
-              href="https://github.com/rohankatakam/coderisk-go/blob/main/LICENSE"
+              href="https://github.com/rohankatakam/coderisk/blob/main/LICENSE"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block border border-gray-300 px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition-colors"
@@ -320,15 +320,16 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Social Proof / Stats */}
-        <div className="pt-24 text-center space-y-8">
+        {/* Beta Testing */}
+        <div className="pt-24 text-center space-y-6">
           <div className="text-sm text-gray-500 uppercase tracking-wider">
-            Trusted by developers at
+            Currently in Beta
           </div>
-          <div className="flex justify-center gap-12 items-center flex-wrap opacity-40">
-            <div className="text-xl font-semibold">YC</div>
-            <div className="text-xl font-semibold">Startup Co</div>
-            <div className="text-xl font-semibold">Tech Inc</div>
+          <div className="text-gray-600 max-w-md mx-auto">
+            Testing with developers at startups and tech companies.
+            <a href="https://github.com/rohankatakam/coderisk" className="text-black font-medium hover:underline ml-1">
+              Join the beta →
+            </a>
           </div>
         </div>
       </main>
@@ -348,15 +349,15 @@ export default function Home() {
               <div className="space-y-2 text-sm text-gray-600">
                 <div><a href="#install" className="hover:text-black">Installation</a></div>
                 <div><a href="/pricing" className="hover:text-black">Pricing</a></div>
-                <div><a href="https://github.com/rohankatakam/coderisk-go#readme" target="_blank" rel="noopener noreferrer" className="hover:text-black">Docs</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk#readme" target="_blank" rel="noopener noreferrer" className="hover:text-black">Docs</a></div>
               </div>
             </div>
             <div>
               <div className="font-semibold mb-4 text-sm">Open Source</div>
               <div className="space-y-2 text-sm text-gray-600">
-                <div><a href="https://github.com/rohankatakam/coderisk-go" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a></div>
-                <div><a href="https://github.com/rohankatakam/coderisk-go/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="hover:text-black">Contributing</a></div>
-                <div><a href="https://github.com/rohankatakam/coderisk-go/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:text-black">License</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" className="hover:text-black">Contributing</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:text-black">License</a></div>
                 <div><a href="/open-source" className="hover:text-black">Open Core Model</a></div>
               </div>
             </div>
@@ -372,7 +373,7 @@ export default function Home() {
               <div className="font-semibold mb-4 text-sm">Connect</div>
               <div className="space-y-2 text-sm text-gray-600">
                 <div><a href="#" className="hover:text-black">Twitter</a></div>
-                <div><a href="https://github.com/rohankatakam/coderisk-go" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a></div>
+                <div><a href="https://github.com/rohankatakam/coderisk" target="_blank" rel="noopener noreferrer" className="hover:text-black">GitHub</a></div>
                 <div><a href="#" className="hover:text-black">Discord</a></div>
               </div>
             </div>
