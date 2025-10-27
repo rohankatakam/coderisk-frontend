@@ -40,6 +40,14 @@ export default function TerminalDemo() {
     {
       type: 'assistant-response',
       content: 'Perfect. I\'ll add the migration script and update the cache invalidation logic as Sarah recommended. Let me make those changes now.'
+    },
+    {
+      type: 'assistant-working',
+      content: 'Creating migration script and updating cache invalidation...'
+    },
+    {
+      type: 'assistant-response',
+      content: 'Changes complete. Your code is now de-risked and ready for review. Want to run crisk check once more to verify?'
     }
   ]
 
@@ -72,9 +80,6 @@ export default function TerminalDemo() {
             <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
             <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
             <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
-          </div>
-          <div className="flex-1 text-center text-[#8b949e] text-xs font-mono">
-            Claude Code
           </div>
         </div>
 
@@ -144,6 +149,20 @@ export default function TerminalDemo() {
                   </div>
                   <div className="flex-1">
                     <div className="text-[#e6edf3] leading-relaxed">
+                      {item.content}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Assistant Working */}
+              {item.type === 'assistant-working' && (
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-[#8b949e] flex items-center justify-center text-white text-xs flex-shrink-0">
+                    C
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-[#8b949e] leading-relaxed italic">
                       {item.content}
                     </div>
                   </div>
