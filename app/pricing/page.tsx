@@ -38,7 +38,7 @@ export default function Pricing() {
         <div className="text-center space-y-4 mb-16">
           <h1 className="text-4xl md:text-5xl font-bold">Pricing</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Self-hosted or cloud. Transparent pricing with no hidden fees.
+            Transparent pricing. Self-hosted or managed cloud infrastructure.
           </p>
         </div>
 
@@ -59,12 +59,12 @@ export default function Pricing() {
             <div className="space-y-4 mb-6">
               <h3 className="font-semibold">What's included:</h3>
               <div className="grid md:grid-cols-2 gap-x-8 gap-y-2 text-sm">
-                <div>✅ CLI tool (MIT licensed, unlimited use)</div>
-                <div>✅ Self-hosted mode (Docker + Neo4j)</div>
-                <div>✅ Full agentic graph navigation</div>
-                <div>✅ &lt;3% false positive rate</div>
-                <div>✅ Complete source code access</div>
-                <div>✅ Community support</div>
+                <div>• CLI tool (MIT licensed, unlimited use)</div>
+                <div>• Self-hosted mode (Docker + Neo4j)</div>
+                <div>• Full agentic graph navigation</div>
+                <div>• Complete source code access</div>
+                <div>• Incident history intelligence</div>
+                <div>• Community support</div>
               </div>
             </div>
 
@@ -120,12 +120,12 @@ export default function Pricing() {
               </div>
 
               <ul className="space-y-3 text-sm">
-                <li>✅ Everything in Self-Hosted</li>
-                <li>✅ Zero setup (30 seconds)</li>
-                <li>✅ No Docker or database management</li>
-                <li>✅ Private repositories</li>
-                <li>✅ 1,000 checks/month included</li>
-                <li>✅ Email support</li>
+                <li>• Everything in Self-Hosted</li>
+                <li>• Zero setup (30 seconds)</li>
+                <li>• No Docker or database management</li>
+                <li>• Private repositories</li>
+                <li>• 1,000 checks/month included</li>
+                <li>• Email support</li>
               </ul>
 
               <button className="w-full border border-gray-300 px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition-colors">
@@ -146,12 +146,12 @@ export default function Pricing() {
               </div>
 
               <ul className="space-y-3 text-sm">
-                <li>✅ Everything in Starter</li>
-                <li>✅ Team collaboration (shared graphs)</li>
-                <li>✅ 5,000 checks/month included</li>
-                <li>✅ Pre-built public cache (instant React/Next.js)</li>
-                <li>✅ Webhooks (auto-update on push)</li>
-                <li>✅ Priority support</li>
+                <li>• Everything in Starter</li>
+                <li>• Team collaboration (shared graphs)</li>
+                <li>• 5,000 checks/month included</li>
+                <li>• Pre-built public cache (instant React/Next.js)</li>
+                <li>• Webhooks (auto-update on push)</li>
+                <li>• Priority support</li>
               </ul>
 
               <button className="w-full bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-800 transition-colors">
@@ -168,13 +168,13 @@ export default function Pricing() {
               </div>
 
               <ul className="space-y-3 text-sm">
-                <li>✅ Everything in Pro</li>
-                <li>✅ Unlimited checks</li>
-                <li>✅ On-premise deployment option</li>
-                <li>✅ SSO/SAML</li>
-                <li>✅ Dedicated support</li>
-                <li>✅ SLA guarantees</li>
-                <li>✅ Custom integrations</li>
+                <li>• Everything in Pro</li>
+                <li>• Unlimited checks</li>
+                <li>• On-premise deployment option</li>
+                <li>• SSO/SAML</li>
+                <li>• Dedicated support</li>
+                <li>• SLA guarantees</li>
+                <li>• Custom integrations</li>
               </ul>
 
               <button className="w-full border border-gray-300 px-6 py-3 rounded-md font-medium hover:bg-gray-50 transition-colors">
@@ -219,13 +219,13 @@ export default function Pricing() {
                 </tr>
                 <tr className="border-b border-gray-200">
                   <td className="py-4 px-4">Team collaboration</td>
-                  <td className="text-center py-4 px-4">❌</td>
-                  <td className="text-center py-4 px-4">✅</td>
+                  <td className="text-center py-4 px-4">No</td>
+                  <td className="text-center py-4 px-4">Yes</td>
                 </tr>
                 <tr className="border-b border-gray-200">
                   <td className="py-4 px-4">Pre-built public cache</td>
-                  <td className="text-center py-4 px-4">❌</td>
-                  <td className="text-center py-4 px-4">✅</td>
+                  <td className="text-center py-4 px-4">No</td>
+                  <td className="text-center py-4 px-4">Yes</td>
                 </tr>
                 <tr className="border-b border-gray-200">
                   <td className="py-4 px-4">Support</td>
@@ -272,10 +272,10 @@ export default function Pricing() {
             </div>
 
             <div className="border-b border-gray-200 pb-6">
-              <h3 className="font-semibold mb-2">Can I avoid LLM costs?</h3>
+              <h3 className="font-semibold mb-2">Why is an LLM required?</h3>
               <p className="text-gray-600 text-sm">
-                No - LLM is required for agentic graph navigation and &lt;3% FP rate. Without LLM,
-                you'd get 10-20% false positives (industry standard).
+                The LLM enables intelligent graph navigation and contextual risk analysis,
+                learning from your specific codebase history to identify genuine incident risks.
               </p>
             </div>
 
@@ -315,7 +315,7 @@ export default function Pricing() {
             <div>
               <div className="font-bold mb-4">CodeRisk</div>
               <div className="text-sm text-gray-600">
-                Open Source AI Code Risk Assessment
+                Pre-commit risk scanner with incident history intelligence
               </div>
             </div>
             <div>
