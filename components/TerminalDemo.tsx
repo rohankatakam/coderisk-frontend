@@ -100,7 +100,7 @@ export default function TerminalDemo() {
               )}
 
               {/* Tool Use */}
-              {item.type === 'tool-use' && 'output' in item && (
+              {item.type === 'tool-use' && 'output' in item && item.output && (
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-full bg-[#8b949e] flex items-center justify-center text-white text-xs flex-shrink-0">
                     C
@@ -108,7 +108,7 @@ export default function TerminalDemo() {
                   <div className="flex-1">
                     <div className="bg-[#0d1117] border border-[#30363d] rounded-lg p-4 space-y-2">
                       <div className="flex items-center gap-2 text-xs text-[#8b949e] mb-3">
-                        <span className="text-[#58a6ff]">$ {item.tool}</span>
+                        <span className="text-[#58a6ff]">$ {'tool' in item ? item.tool : ''}</span>
                       </div>
                       <div className="space-y-1 font-mono text-xs">
                         {item.output.map((line, i) => {
