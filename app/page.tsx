@@ -129,7 +129,7 @@ export default function Home() {
             Ready to prevent regressions from the start?
           </h2>
           <p className="text-gray-600">
-            Reach out to <a href="mailto:rohankatakam@gmail.com" className="text-black font-medium hover:underline">rohankatakam@gmail.com</a> for inquiries
+            Reach out to <a href="mailto:rohan@coderisk.dev" className="text-black font-medium hover:underline">rohankatakam@gmail.com</a> for inquiries
           </p>
           <div className="text-sm text-gray-500 mt-8">
             Built by CodeRisk Team
