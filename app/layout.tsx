@@ -14,8 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CodeRisk - Trust infrastructure for AI-generated code",
-  description: "The pre-flight check for developers. Know if your code is safe before you commit. Intelligent pre-commit risk assessment in 2-5 seconds.",
+  title: "CodeRisk - Stop Breaking Production",
+  description: "Know if your code will cause an incident—before code review. Learns from your repository's incident history to prevent regressions. Free for individuals with BYOK.",
+  icons: {
+    icon: '/icon.svg',
+  },
 };
 
 export default function RootLayout({
