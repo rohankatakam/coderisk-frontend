@@ -1,8 +1,13 @@
+'use client'
+
 import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import TerminalDemo from '@/components/TerminalDemo'
 import FeatureCarousel from '@/components/FeatureCarousel'
+import { useState } from 'react'
 
 export default function Home() {
+  const [activeSlide, setActiveSlide] = useState(0)
+
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Navigation */}
@@ -31,14 +36,14 @@ export default function Home() {
           <div className="space-y-6">
             {/* Main Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-              Prevent Incidents
+              Stop Breaking
               <br />
-              Before Commit
+              Production
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl text-gray-600">
-              Learn from your incident history.
+              Know if your code will cause an incident—before code review.
             </p>
 
             {/* Quick Start Command */}
@@ -51,44 +56,119 @@ export default function Home() {
             </div>
 
             {/* Feature Carousel */}
-            <FeatureCarousel />
+            <FeatureCarousel onSlideChange={setActiveSlide} />
           </div>
 
           {/* Right Side - Terminal Demo */}
           <div className="lg:block hidden">
-            <TerminalDemo />
+            <TerminalDemo activeSlide={activeSlide} />
           </div>
         </div>
 
-        {/* AI Development Workflow */}
-        <div className="pt-24 space-y-8">
+        {/* Problem Section */}
+        <div className="pt-24 space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold">
-              Works with your AI development workflow
+              You've seen this before
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Use CodeRisk with Claude Code, Cursor, Copilot, CodeRabbit, and Greptile. We fit into the modern AI development stack—catching incident risks before code review.
+              Your team ships fast. But production incidents keep happening. The same files break. The same patterns repeat.
             </p>
           </div>
 
-          {/* Workflow Diagram */}
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <div className="text-sm font-semibold text-gray-900 mb-2">Generate</div>
-                <div className="text-xs text-gray-600">Claude Code, Cursor, Copilot</div>
+          {/* Pain Points Grid */}
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+              <div className="text-red-900 font-semibold mb-2">😰 The Incident Call</div>
+              <p className="text-sm text-red-800">
+                "Production is down. Your PR from yesterday broke payments. Can you hop on?"
+              </p>
+            </div>
+            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+              <div className="text-red-900 font-semibold mb-2">🤦 The Incomplete Change</div>
+              <p className="text-sm text-red-800">
+                You updated auth.ts but forgot session.ts always changes with it. Now 500 errors everywhere.
+              </p>
+            </div>
+            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+              <div className="text-red-900 font-semibold mb-2">👻 The Stale Code</div>
+              <p className="text-sm text-red-800">
+                You modified a file no one's touched in 2 years. The original owner left. It broke.
+              </p>
+            </div>
+            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+              <div className="text-red-900 font-semibold mb-2">🔁 The Same File, Again</div>
+              <p className="text-sm text-red-800">
+                "Didn't we just fix this file last week? Why does it keep breaking?"
+              </p>
+            </div>
+          </div>
+
+          {/* Solution */}
+          <div className="text-center space-y-4 pt-8">
+            <h3 className="text-2xl md:text-3xl font-bold">
+              CodeRisk catches these before you push
+            </h3>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Run <code className="bg-gray-100 px-2 py-1 rounded text-sm">crisk check</code> and know if your change will break production—in 5 seconds.
+            </p>
+          </div>
+        </div>
+
+        {/* How It Works */}
+        <div className="pt-24 space-y-8">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold">
+              How it works
+            </h2>
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-6">
+            <div className="flex gap-6 items-start">
+              <div className="flex-shrink-0 w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-bold text-xl">
+                1
               </div>
-              <div className="bg-blue-50 rounded-lg p-6 border-2 border-blue-500">
-                <div className="text-sm font-semibold text-gray-900 mb-2">Risk Check</div>
-                <div className="text-xs text-gray-600">CodeRisk (pre-commit)</div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Analyzes your repository's history</h3>
+                <p className="text-gray-600">
+                  CodeRisk scans your Git history, issues, and past incidents to learn what breaks in YOUR codebase.
+                </p>
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <div className="text-sm font-semibold text-gray-900 mb-2">Review</div>
-                <div className="text-xs text-gray-600">CodeRabbit, Greptile</div>
+            </div>
+
+            <div className="flex gap-6 items-start">
+              <div className="flex-shrink-0 w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-bold text-xl">
+                2
               </div>
-              <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-                <div className="text-sm font-semibold text-gray-900 mb-2">Deploy</div>
-                <div className="text-xs text-gray-600">CI/CD Pipeline</div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">You make changes, run one command</h3>
+                <p className="text-gray-600">
+                  Before pushing, run <code className="bg-gray-100 px-2 py-1 rounded text-sm">crisk check</code>. Get results in 5 seconds.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-6 items-start">
+              <div className="flex-shrink-0 w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-bold text-xl">
+                3
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Get warnings about risky changes</h3>
+                <p className="text-gray-600">
+                  See if your code matches past incident patterns, incomplete changes, or stale files—before anyone else sees it.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-6 items-start">
+              <div className="flex-shrink-0 w-12 h-12 bg-black text-white rounded-full flex items-center justify-center font-bold text-xl">
+                4
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Fix issues privately, push confidently</h3>
+                <p className="text-gray-600">
+                  No embarrassing PR comments. No production fires. Just clean code that ships safely.
+                </p>
               </div>
             </div>
           </div>
@@ -99,25 +179,35 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-center">
             Simple Pricing
           </h2>
-          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
+          <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-6">
             <div className="border border-gray-200 rounded-lg p-6">
-              <div className="text-lg font-semibold mb-2">Self-Hosted</div>
-              <div className="text-2xl font-bold mb-4">$3-5<span className="text-base font-normal text-gray-600">/mo</span></div>
+              <div className="text-lg font-semibold mb-2">Individual</div>
+              <div className="text-2xl font-bold mb-4">Free<span className="text-base font-normal text-gray-600"></span></div>
               <ul className="space-y-2 text-sm text-gray-600 mb-4">
-                <li>• BYOK (OpenAI API)</li>
-                <li>• Full source code (MIT)</li>
-                <li>• Local Docker deployment</li>
-                <li>• ~100 checks/month</li>
+                <li>• BYOK (bring your own key)</li>
+                <li>• Local-first</li>
+                <li>• Open source core</li>
+                <li>• You control LLM costs</li>
               </ul>
             </div>
             <div className="border-2 border-black rounded-lg p-6">
-              <div className="text-lg font-semibold mb-2">Cloud</div>
-              <div className="text-2xl font-bold mb-4">$10-50<span className="text-base font-normal text-gray-600">/user/mo</span></div>
+              <div className="text-lg font-semibold mb-2">Teams</div>
+              <div className="text-2xl font-bold mb-4">$500<span className="text-base font-normal text-gray-600">/mo</span></div>
               <ul className="space-y-2 text-sm text-gray-600 mb-4">
-                <li>• Zero DevOps overhead</li>
-                <li>• Team collaboration</li>
-                <li>• Instant setup (30s)</li>
-                <li>• Unlimited checks</li>
+                <li>• 5-50 developers</li>
+                <li>• Team analytics</li>
+                <li>• Shared key management</li>
+                <li>• Priority support</li>
+              </ul>
+            </div>
+            <div className="border border-gray-200 rounded-lg p-6">
+              <div className="text-lg font-semibold mb-2">Enterprise</div>
+              <div className="text-2xl font-bold mb-4">$2,000<span className="text-base font-normal text-gray-600">/mo</span></div>
+              <ul className="space-y-2 text-sm text-gray-600 mb-4">
+                <li>• 50+ developers</li>
+                <li>• On-prem deployment</li>
+                <li>• SSO & custom integrations</li>
+                <li>• Dedicated support</li>
               </ul>
             </div>
           </div>
@@ -126,10 +216,13 @@ export default function Home() {
         {/* Footer CTA */}
         <div className="pt-24 pb-16 text-center space-y-6 border-t border-gray-200 mt-24">
           <h2 className="text-2xl md:text-3xl font-bold">
-            Ready to prevent regressions from the start?
+            Stop the next production incident before it happens
           </h2>
           <p className="text-gray-600">
-            Reach out to <a href="mailto:rohan@coderisk.dev" className="text-black font-medium hover:underline">rohankatakam@gmail.com</a> for inquiries
+            Join teams who catch breaking changes before code review.
+          </p>
+          <p className="text-gray-600">
+            <a href="mailto:rohan@coderisk.dev" className="text-black font-medium hover:underline">rohankatakam@gmail.com</a>
           </p>
           <div className="text-sm text-gray-500 mt-8">
             Built by CodeRisk Team

@@ -1,195 +1,212 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 
-export default function TerminalDemo() {
-  const [visibleMessages, setVisibleMessages] = useState(0)
-  const scrollRef = useRef<HTMLDivElement>(null)
+interface TerminalDemoProps {
+  activeSlide: number
+}
 
-  const workflow = [
+export default function TerminalDemo({ activeSlide }: TerminalDemoProps) {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+
+  // Scenarios matching the carousel features
+  const scenarios = [
+    // Slide 0: Incident History
     {
-      type: 'user-message',
-      content: 'Please run crisk check on our code changes to assess risk before we push for review.'
-    },
-    {
-      type: 'tool-use',
-      tool: 'crisk check',
+      file: 'src/payments/stripe.ts',
       output: [
-        'Analyzing changes...',
+        '$ crisk check',
         '',
-        'Risk Analysis Complete',
+        '🔴 HIGH RISK',
         '',
-        'High Risk: src/auth/session.go',
-        '  • Modified by 3 developers in last 30 days',
-        '  • Linked to 2 incidents (last 6 months)',
-        '  • Affects 12 dependent files',
+        'payments/stripe.ts',
+        '  ⚠️  Linked to 3 production incidents',
+        '  • #847: Payment timeout (Dec 2)',
+        '  • #712: Stripe API failure (Nov 18)',
+        '  • #623: Transaction rollback (Oct 29)',
         '',
-        'Recommendation:',
-        '  • Coordinate with @sarah (file owner)',
-        '  • Review auth/session_test.go',
+        '💡 Review incidents before modifying'
       ]
     },
+    // Slide 1: Co-Change Detection
     {
-      type: 'assistant-response',
-      content: 'I found a high-risk change in auth/session.go. This file has a history of incidents and is actively maintained by multiple developers. I recommend coordinating with Sarah before pushing.'
+      file: 'src/auth/login.ts',
+      output: [
+        '$ crisk check',
+        '',
+        '🟡 MEDIUM RISK',
+        '',
+        'auth/login.ts',
+        '  ⚠️  Incomplete change detected',
+        '  • session.ts changes with this 82% of the time',
+        '  • You modified login.ts but not session.ts',
+        '',
+        '💡 Did you forget to update session.ts?'
+      ]
     },
+    // Slide 2: Ownership Staleness
     {
-      type: 'user-message',
-      content: 'I checked with Sarah - she confirmed the session timeout changes are safe. She suggested adding a migration script and updating the cache invalidation logic. Can you make those changes?'
+      file: 'src/database/migration.ts',
+      output: [
+        '$ crisk check',
+        '',
+        '🟡 MEDIUM RISK',
+        '',
+        'database/migration.ts',
+        '  ⚠️  Stale code ownership',
+        '  • Last modified: 2 years ago',
+        '  • Original owner: Sarah (left team)',
+        '  • High complexity, zero recent changes',
+        '',
+        '💡 Get backup review before pushing'
+      ]
     },
+    // Slide 3: Repository-Specific Learning
     {
-      type: 'assistant-response',
-      content: 'Perfect. I\'ll add the migration script and update the cache invalidation logic as Sarah recommended. Let me make those changes now.'
-    },
-    {
-      type: 'assistant-working',
-      content: 'Creating migration script and updating cache invalidation...'
-    },
-    {
-      type: 'assistant-response',
-      content: 'Changes complete. Your code is now de-risked and ready for review. Want to run crisk check once more to verify?'
+      file: 'src/api/webhook.ts',
+      output: [
+        '$ crisk check',
+        '',
+        '✅ LOW RISK',
+        '',
+        'api/webhook.ts',
+        '  ✓ No incident history',
+        '  ✓ Active ownership (you: 89% commits)',
+        '  ✓ No co-change patterns detected',
+        '',
+        '📊 Analysis: 10,247 commits, 156 incidents'
+      ]
     }
   ]
 
+  // Sync with parent carousel
   useEffect(() => {
-    if (visibleMessages >= workflow.length) {
-      return // Stop when all messages are shown
+    if (activeSlide !== currentSlide) {
+      setIsTransitioning(true)
+      setTimeout(() => {
+        setCurrentSlide(activeSlide)
+        setIsTransitioning(false)
+      }, 200) // Quick fade transition
     }
+  }, [activeSlide, currentSlide])
 
-    const timer = setTimeout(() => {
-      setVisibleMessages((prev) => prev + 1)
-    }, 2000) // 2 second delay between messages
-
-    return () => clearTimeout(timer)
-  }, [visibleMessages, workflow.length])
-
-  // Auto-scroll to bottom when new messages appear
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight
-    }
-  }, [visibleMessages])
+  const currentScenario = scenarios[currentSlide]
 
   return (
     <div className="relative w-full h-full">
-      {/* Claude Code Style Window */}
-      <div className="bg-[#1a2332] rounded-lg shadow-2xl overflow-hidden border border-[#2d3748]">
+      {/* Terminal Window */}
+      <div className="bg-[#1a1a1a] rounded-lg shadow-2xl overflow-hidden border border-gray-700">
         {/* Header */}
-        <div className="bg-[#0f1419] px-4 py-3 flex items-center gap-2 border-b border-[#2d3748]">
+        <div className="bg-[#0a0a0a] px-4 py-3 flex items-center gap-2 border-b border-gray-700">
           <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-            <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-            <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+          </div>
+          <div className="ml-4 text-gray-400 text-xs font-mono">
+            terminal — {currentScenario.file}
           </div>
         </div>
 
-        {/* Scrollable Content */}
-        <div
-          ref={scrollRef}
-          className="p-6 font-sans text-sm h-[450px] overflow-y-auto space-y-4 scroll-smooth"
-        >
-          {workflow.slice(0, visibleMessages).map((item, index) => (
-            <div key={index} className="fade-in">
-              {/* User Message */}
-              {item.type === 'user-message' && (
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#3b82f6] flex items-center justify-center text-white text-xs font-semibold flex-shrink-0">
-                    U
+        {/* Content */}
+        <div className={`p-6 font-mono text-sm h-[380px] transition-opacity duration-200 ${
+          isTransitioning ? 'opacity-0' : 'opacity-100'
+        }`}>
+          <div className="space-y-1">
+            {currentScenario.output.map((line, index) => {
+              // Command line
+              if (line.startsWith('$')) {
+                return (
+                  <div key={index} className="text-green-400 mb-3">
+                    {line}
                   </div>
-                  <div className="flex-1">
-                    <div className="text-[#e6edf3] leading-relaxed">
-                      {item.content}
-                    </div>
-                  </div>
-                </div>
-              )}
+                )
+              }
 
-              {/* Tool Use */}
-              {item.type === 'tool-use' && 'output' in item && item.output && (
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#8b949e] flex items-center justify-center text-white text-xs flex-shrink-0">
-                    C
-                  </div>
-                  <div className="flex-1">
-                    <div className="bg-[#0d1117] border border-[#30363d] rounded-lg p-4 space-y-2">
-                      <div className="flex items-center gap-2 text-xs text-[#8b949e] mb-3">
-                        <span className="text-[#58a6ff]">$ {'tool' in item ? item.tool : ''}</span>
-                      </div>
-                      <div className="space-y-1 font-mono text-xs">
-                        {item.output.map((line, i) => {
-                          if (line === '') return <div key={i} className="h-1"></div>
-                          if (line === 'Analyzing changes...') {
-                            return <div key={i} className="text-[#8b949e] italic">{line}</div>
-                          }
-                          if (line === 'Risk Analysis Complete') {
-                            return <div key={i} className="text-[#3fb950] font-semibold">{line}</div>
-                          }
-                          if (line.includes('High Risk:')) {
-                            return <div key={i} className="text-[#f85149] font-semibold">{line}</div>
-                          }
-                          if (line.includes('Recommendation:')) {
-                            return <div key={i} className="text-[#58a6ff] font-semibold">{line}</div>
-                          }
-                          if (line.startsWith('  •')) {
-                            return <div key={i} className="text-[#8b949e]">{line}</div>
-                          }
-                          return <div key={i} className="text-[#c9d1d9]">{line}</div>
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
+              // Empty line
+              if (line === '') {
+                return <div key={index} className="h-2"></div>
+              }
 
-              {/* Assistant Response */}
-              {item.type === 'assistant-response' && (
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#8b949e] flex items-center justify-center text-white text-xs flex-shrink-0">
-                    C
+              // Status indicators
+              if (line.includes('🔴 HIGH RISK')) {
+                return (
+                  <div key={index} className="text-red-400 font-bold text-base mb-2">
+                    {line}
                   </div>
-                  <div className="flex-1">
-                    <div className="text-[#e6edf3] leading-relaxed">
-                      {item.content}
-                    </div>
+                )
+              }
+              if (line.includes('🟡 MEDIUM RISK')) {
+                return (
+                  <div key={index} className="text-yellow-400 font-bold text-base mb-2">
+                    {line}
                   </div>
-                </div>
-              )}
+                )
+              }
+              if (line.includes('✅ LOW RISK')) {
+                return (
+                  <div key={index} className="text-green-400 font-bold text-base mb-2">
+                    {line}
+                  </div>
+                )
+              }
 
-              {/* Assistant Working */}
-              {item.type === 'assistant-working' && (
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#8b949e] flex items-center justify-center text-white text-xs flex-shrink-0">
-                    C
+              // File name
+              if (line.endsWith('.ts') || line.endsWith('.tsx') || line.endsWith('.js')) {
+                return (
+                  <div key={index} className="text-blue-300 font-semibold mb-2">
+                    {line}
                   </div>
-                  <div className="flex-1">
-                    <div className="text-[#8b949e] leading-relaxed italic">
-                      {item.content}
-                    </div>
+                )
+              }
+
+              // Warning/info lines
+              if (line.includes('⚠️') || line.includes('•')) {
+                return (
+                  <div key={index} className="text-gray-300 text-xs pl-2">
+                    {line}
                   </div>
+                )
+              }
+
+              // Success checks
+              if (line.includes('✓')) {
+                return (
+                  <div key={index} className="text-green-400 text-xs pl-2">
+                    {line}
+                  </div>
+                )
+              }
+
+              // Recommendations
+              if (line.includes('💡')) {
+                return (
+                  <div key={index} className="text-cyan-400 text-xs font-semibold mt-2">
+                    {line}
+                  </div>
+                )
+              }
+
+              // Stats
+              if (line.includes('📊')) {
+                return (
+                  <div key={index} className="text-gray-500 text-xs mt-2">
+                    {line}
+                  </div>
+                )
+              }
+
+              // Default
+              return (
+                <div key={index} className="text-gray-400">
+                  {line}
                 </div>
-              )}
-            </div>
-          ))}
+              )
+            })}
+          </div>
         </div>
       </div>
-
-      {/* CSS Animations */}
-      <style jsx>{`
-        .fade-in {
-          animation: fadeIn 0.6s ease-in;
-        }
-
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </div>
   )
 }
