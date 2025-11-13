@@ -90,11 +90,11 @@ export default function CriskInitAnimation({ isPaused }: CriskInitAnimationProps
       </div>
 
       {/* Graph Visualization Container */}
-      <div className="flex-1 relative bg-white rounded-lg border border-slate-200 p-6 overflow-hidden">
+      <div className="flex-1 relative bg-white rounded-lg p-4 overflow-hidden min-h-[600px]">
         <svg
           viewBox="0 0 500 600"
           className="w-full h-full"
-          style={{ maxHeight: '500px' }}
+          preserveAspectRatio="xMidYMid meet"
         >
           {/* Layer 1: Code Structure */}
           <AnimatePresence>

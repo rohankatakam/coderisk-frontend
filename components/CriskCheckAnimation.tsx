@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-type Stage = 'detect' | 'query' | 'agentic' | 'report' | 'reset'
+type Stage = 'detect' | 'agentic' | 'report' | 'reset'
 
 interface CriskCheckAnimationProps {
   isPaused: boolean
@@ -19,9 +19,6 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
 
     switch (stage) {
       case 'detect':
-        timers.push(setTimeout(() => setStage('query'), 3000))
-        break
-      case 'query':
         timers.push(setTimeout(() => setStage('agentic'), 3000))
         break
       case 'agentic':
@@ -53,16 +50,51 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
         <h3 className="text-2xl font-bold text-[#0F172A] mb-2">
           crisk check: Real-Time Analysis
         </h3>
-        <p className="text-sm text-[#475569]">
-          Four-step process for comprehensive risk assessment
-        </p>
+        <AnimatePresence mode="wait">
+          {stage === 'detect' && (
+            <motion.p
+              key="detect"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="text-sm font-semibold text-slate-700"
+            >
+              1. Detect Changes
+            </motion.p>
+          )}
+          {stage === 'agentic' && (
+            <motion.p
+              key="agentic"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="text-sm font-semibold text-orange-700"
+            >
+              2. Agentic Search
+            </motion.p>
+          )}
+          {stage === 'report' && (
+            <motion.p
+              key="report"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="text-sm font-semibold text-green-700"
+            >
+              3. Risk Report
+            </motion.p>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Animation Container */}
-      <div className="flex-1 relative bg-white rounded-lg border border-slate-200 p-6 flex flex-col justify-center">
+      <div className="flex-1 relative bg-white rounded-lg p-4 flex flex-col justify-center min-h-[600px]">
 
         <AnimatePresence mode="wait">
-          {/* Stage 1: Detect Changes */}
+          {/* Stage 1: Detect Changes & Find in Graph */}
           {stage === 'detect' && (
             <motion.div
               key="detect"
@@ -72,25 +104,22 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
               transition={{ duration: 0.5 }}
               className="space-y-4"
             >
-              <div className="flex items-center justify-between mb-3">
-                <h4 className="text-lg font-semibold text-[#0F172A]">
-                  1. Detect Changes
-                </h4>
+              <div className="flex items-center justify-end mb-3">
                 <span className="px-2 py-1 bg-green-500 text-white text-xs font-bold rounded">
                   &lt;100ms
                 </span>
               </div>
 
-              {/* Mini Terminal */}
+              {/* Terminal Command */}
               <div className="bg-[#1e1e1e] rounded-md p-3 border border-slate-700">
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="space-y-1"
+                  className="space-y-2"
                 >
                   <div className="text-green-400 text-xs font-mono">
-                    $ git diff --name-only
+                    $ crisk check src/components/Auth.tsx src/utils/validation.ts
                   </div>
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -99,117 +128,104 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
                     className="text-gray-300 text-xs font-mono space-y-0.5"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="text-green-400">✓</span>
-                      <span>src/components/Auth.tsx</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-green-400">✓</span>
-                      <span>src/utils/validation.ts</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-green-400">✓</span>
-                      <span>tests/auth.test.ts</span>
+                      <span className="text-blue-400">→</span>
+                      <span>Finding files in knowledge graph...</span>
                     </div>
                   </motion.div>
                 </motion.div>
               </div>
 
-              {/* Patch Visualization */}
+              {/* Graph Visualization showing file lookup */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.8 }}
-                className="bg-slate-50 rounded-md p-3 border border-slate-200"
+                className="bg-white rounded-md p-4 border border-slate-200"
               >
-                <div className="text-xs font-mono">
-                  <div className="text-cyan-600">@@ -12,3 +12,5 @@</div>
-                  <div className="text-red-600">- const user = req.user</div>
-                  <div className="text-green-600">+ const user = await validateUser(req)</div>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
+                <svg viewBox="0 0 400 200" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
+                  {/* File nodes */}
+                  <motion.g
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.0 }}
+                  >
+                    <circle cx="120" cy="100" r="35" className="fill-slate-50 stroke-slate-400" strokeWidth="2.5" />
+                    <text x="120" y="95" textAnchor="middle" dominantBaseline="middle" className="text-[9px] fill-slate-600 font-semibold">Auth.tsx</text>
+                  </motion.g>
 
-          {/* Stage 2: Query Graph */}
-          {stage === 'query' && (
-            <motion.div
-              key="query"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-4"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <h4 className="text-lg font-semibold text-[#0F172A]">
-                  2. Query Graph
-                </h4>
-                <span className="px-2 py-1 bg-green-500 text-white text-xs font-bold rounded">
-                  &lt;200ms
-                </span>
-              </div>
+                  <motion.g
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.2 }}
+                  >
+                    <circle cx="280" cy="100" r="35" className="fill-slate-50 stroke-slate-400" strokeWidth="2.5" />
+                    <text x="280" y="95" textAnchor="middle" dominantBaseline="middle" className="text-[9px] fill-slate-600 font-semibold">validation.ts</text>
+                  </motion.g>
 
-              {/* Neo4j Logo/Icon */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="flex justify-center mb-4"
-              >
-                <div className="bg-slate-100 rounded-lg px-4 py-2 border border-slate-300">
-                  <span className="text-lg font-bold text-slate-700">Neo4j</span>
-                </div>
-              </motion.div>
+                  {/* Arrow indicators from terminal */}
+                  <motion.path
+                    d="M 80 50 L 105 75"
+                    className="stroke-green-400"
+                    strokeWidth="2"
+                    markerEnd="url(#arrow-find)"
+                    fill="none"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 1 }}
+                    transition={{ delay: 1.4, duration: 0.5 }}
+                  />
 
-              {/* Query Bubbles */}
-              <div className="flex flex-wrap gap-2 justify-center">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.4 }}
-                  className="px-3 py-1.5 bg-blue-50 border border-blue-300 rounded-full text-xs font-semibold text-blue-700"
-                >
-                  ownership
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6 }}
-                  className="px-3 py-1.5 bg-purple-50 border border-purple-300 rounded-full text-xs font-semibold text-purple-700"
-                >
-                  co-change
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8 }}
-                  className="px-3 py-1.5 bg-red-50 border border-red-300 rounded-full text-xs font-semibold text-red-700"
-                >
-                  incidents
-                </motion.div>
-              </div>
+                  <motion.path
+                    d="M 320 50 L 295 75"
+                    className="stroke-green-400"
+                    strokeWidth="2"
+                    markerEnd="url(#arrow-find)"
+                    fill="none"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 1 }}
+                    transition={{ delay: 1.6, duration: 0.5 }}
+                  />
 
-              {/* Results Counter */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.0 }}
-                className="text-center mt-4"
-              >
-                <div className="inline-block bg-green-50 border border-green-300 rounded-lg px-4 py-2">
-                  <motion.span
+                  <motion.text
+                    x="80"
+                    y="40"
+                    className="text-[10px] fill-green-500 font-semibold"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="text-sm font-bold text-green-700"
+                    transition={{ delay: 1.3 }}
                   >
-                    ✓ 12 related files found
-                  </motion.span>
-                </div>
+                    Found!
+                  </motion.text>
+
+                  <motion.text
+                    x="280"
+                    y="40"
+                    className="text-[10px] fill-green-500 font-semibold"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5 }}
+                  >
+                    Found!
+                  </motion.text>
+
+                  <defs>
+                    <marker
+                      id="arrow-find"
+                      markerWidth="8"
+                      markerHeight="8"
+                      refX="7"
+                      refY="2.5"
+                      orient="auto"
+                      markerUnits="strokeWidth"
+                    >
+                      <polygon points="0 0, 8 2.5, 0 5" className="fill-green-400" />
+                    </marker>
+                  </defs>
+                </svg>
               </motion.div>
             </motion.div>
           )}
 
-          {/* Stage 3: Agentic Search */}
+          {/* Stage 2: Agentic Search */}
           {stage === 'agentic' && (
             <motion.div
               key="agentic"
@@ -219,18 +235,15 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
               transition={{ duration: 0.5 }}
               className="space-y-4"
             >
-              <div className="flex items-center justify-between mb-6">
-                <h4 className="text-lg font-semibold text-[#0F172A]">
-                  3. Agentic Search
-                </h4>
+              <div className="flex items-center justify-end mb-6">
                 <div className="px-3 py-1 bg-orange-100 border border-orange-300 text-orange-700 text-xs font-bold rounded">
                   LLM Agent
                 </div>
               </div>
 
               {/* SVG for Agent with Radiating Arrows */}
-              <div className="relative" style={{ height: '300px' }}>
-                <svg viewBox="0 0 400 300" className="w-full h-full">
+              <div className="relative flex items-center justify-center" style={{ minHeight: '500px' }}>
+                <svg viewBox="0 0 400 350" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
                   {/* Central Agent */}
                   <motion.g
                     initial={{ scale: 0, opacity: 0 }}
@@ -407,7 +420,7 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
             </motion.div>
           )}
 
-          {/* Stage 4: Risk Report */}
+          {/* Stage 3: Risk Report */}
           {stage === 'report' && (
             <motion.div
               key="report"
@@ -417,10 +430,7 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
               transition={{ duration: 0.5 }}
               className="space-y-4"
             >
-              <div className="flex items-center justify-between mb-4">
-                <h4 className="text-lg font-semibold text-[#0F172A]">
-                  4. Risk Report
-                </h4>
+              <div className="flex items-center justify-end mb-4">
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
@@ -431,66 +441,90 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
                 </motion.span>
               </div>
 
-              {/* Risk Card */}
+              {/* Terminal-style Output */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
-                className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg border-2 border-green-300 p-6 shadow-lg"
+                className="bg-[#1e1e1e] rounded-lg border border-slate-700 p-4 font-mono text-sm space-y-4"
               >
-                {/* Risk Level Badge */}
+                {/* First File Result */}
                 <motion.div
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="flex items-center gap-3 mb-4"
+                  className="space-y-2"
                 >
-                  <span className="text-sm font-semibold text-slate-700">Risk Level:</span>
-                  <span className="px-4 py-2 bg-amber-400 text-white text-lg font-bold rounded-lg shadow">
-                    MEDIUM
-                  </span>
-                </motion.div>
-
-                {/* Confidence Bar */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6 }}
-                  className="mb-4"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-semibold text-slate-700">Confidence:</span>
-                    <span className="text-sm font-bold text-green-700">85%</span>
+                  <div className="text-gray-400 text-xs border-b border-gray-700 pb-1">
+                    src/components/Auth.tsx
                   </div>
-                  <div className="w-full bg-slate-200 rounded-full h-3 overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: '85%' }}
-                      transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
-                      className="bg-gradient-to-r from-green-400 to-green-600 h-full rounded-full"
-                    />
-                  </div>
-                </motion.div>
 
-                {/* Reasoning Text */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.9 }}
-                  className="bg-white/60 rounded-md p-3 border border-green-200"
-                >
-                  <div className="text-xs font-semibold text-slate-700 mb-1">Reasoning:</div>
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 1.1 }}
-                    className="text-xs text-slate-600 leading-relaxed"
+                    transition={{ delay: 0.6 }}
+                    className="p-3 bg-amber-900/30 border border-amber-700/50 rounded"
                   >
-                    • Modified by 3 developers in last 6 months<br />
-                    • Linked to 2 production incidents<br />
-                    • High co-change with authentication module<br />
-                    • 12 related files require careful review
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-amber-400 text-base">⚠</span>
+                      <span className="text-amber-400 font-bold text-xs">MEDIUM RISK</span>
+                      <span className="ml-auto text-gray-400 text-xs">85% confidence</span>
+                    </div>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.8 }}
+                      className="text-gray-300 text-xs space-y-1"
+                    >
+                      <div>• Modified by 3 developers in last 6 months</div>
+                      <div>• Linked to 2 production incidents</div>
+                      <div>• High co-change with authentication module</div>
+                    </motion.div>
                   </motion.div>
+                </motion.div>
+
+                {/* Second File Result */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.0 }}
+                  className="space-y-2"
+                >
+                  <div className="text-gray-400 text-xs border-b border-gray-700 pb-1">
+                    src/utils/validation.ts
+                  </div>
+
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.2 }}
+                    className="p-3 bg-green-900/30 border border-green-700/50 rounded"
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-green-400 text-base">✓</span>
+                      <span className="text-green-400 font-bold text-xs">LOW RISK</span>
+                      <span className="ml-auto text-gray-400 text-xs">92% confidence</span>
+                    </div>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.4 }}
+                      className="text-gray-300 text-xs space-y-1"
+                    >
+                      <div>• Well-tested utility function</div>
+                      <div>• Single owner, clear responsibility</div>
+                      <div>• No recent incidents</div>
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.6 }}
+                  className="text-gray-400 text-xs border-t border-gray-700 pt-2"
+                >
+                  <div>✓ Analysis complete (2 files)</div>
                 </motion.div>
               </motion.div>
             </motion.div>
