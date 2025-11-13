@@ -11,24 +11,24 @@ export default function FeatureCarousel({ onSlideChange }: FeatureCarouselProps)
 
   const features = [
     {
-      title: 'Knows Your Incident History',
-      subtitle: 'Stops you from repeating past mistakes',
-      example: '⚠️ This file caused 3 production incidents. Review the linked issues before changing.'
+      title: 'Links Past Incidents to Code',
+      subtitle: 'Stops you from repeating production failures',
+      example: 'This file caused 3 production incidents. Review linked issues before modifying.'
     },
     {
-      title: 'Catches Incomplete Changes',
-      subtitle: 'Files that change together',
-      example: '⚠️ You modified auth.ts, but session.ts changes with it 80% of the time. Did you forget it?'
+      title: 'Detects Co-Change Patterns',
+      subtitle: 'Finds files that change together',
+      example: 'You modified auth.ts, but session.ts changes with it 82% of the time. Incomplete change detected.'
     },
     {
-      title: 'Flags Stale Code',
-      subtitle: 'Warns about risky territory',
-      example: '⚠️ Last modified 2 years ago by Sarah (now gone). High-risk change—get backup.'
+      title: 'Tracks Code Ownership',
+      subtitle: 'Identifies stale and risky territory',
+      example: 'Last modified 2 years ago by Sarah (left team). High complexity, zero recent changes. Get backup review.'
     },
     {
-      title: 'Learns Your Codebase',
-      subtitle: 'Not generic, yours',
-      example: '✅ Analyzed 10K commits from your repo. Knows YOUR patterns, YOUR risks.'
+      title: 'Repository-Specific Intelligence',
+      subtitle: 'Not generic rules—YOUR codebase',
+      example: 'Analyzed 10,247 commits and 156 incidents from your repository. Knows YOUR patterns and risks.'
     }
   ]
 
@@ -51,7 +51,7 @@ export default function FeatureCarousel({ onSlideChange }: FeatureCarouselProps)
   return (
     <div className="relative">
       {/* Carousel */}
-      <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 min-h-[140px]">
+      <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-8 border-2 border-gray-200 min-h-[180px] shadow-sm">
         {features.map((feature, index) => (
           <div
             key={index}
@@ -61,16 +61,16 @@ export default function FeatureCarousel({ onSlideChange }: FeatureCarouselProps)
                 : 'opacity-0 hidden'
             }`}
           >
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div>
-                <h3 className="text-lg font-semibold text-gray-900">
+                <h3 className="text-xl font-bold text-gray-900 mb-1">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-gray-600">{feature.subtitle}</p>
+                <p className="text-base text-gray-600">{feature.subtitle}</p>
               </div>
-              <div className="bg-white rounded px-3 py-2 border border-gray-200">
-                <p className="text-sm text-gray-700 italic">
-                  "{feature.example}"
+              <div className="bg-white rounded-lg px-4 py-3 border border-gray-300 shadow-sm">
+                <p className="text-sm text-gray-800 leading-relaxed">
+                  {feature.example}
                 </p>
               </div>
             </div>
@@ -79,7 +79,7 @@ export default function FeatureCarousel({ onSlideChange }: FeatureCarouselProps)
       </div>
 
       {/* Dots */}
-      <div className="flex justify-center gap-2 mt-4">
+      <div className="flex justify-center gap-2 mt-6">
         {features.map((_, index) => (
           <button
             key={index}
@@ -87,10 +87,10 @@ export default function FeatureCarousel({ onSlideChange }: FeatureCarouselProps)
               setActiveSlide(index)
               onSlideChange?.(index)
             }}
-            className={`w-2 h-2 rounded-full transition-all ${
+            className={`h-2 rounded-full transition-all ${
               index === activeSlide
-                ? 'bg-gray-900 w-8'
-                : 'bg-gray-300 hover:bg-gray-400'
+                ? 'bg-black w-8'
+                : 'bg-gray-300 hover:bg-gray-400 w-2'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

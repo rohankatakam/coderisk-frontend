@@ -2,94 +2,109 @@
 
 import { useEffect, useState } from 'react'
 
-interface TerminalDemoProps {
-  activeSlide: number
-}
-
-export default function TerminalDemo({ activeSlide }: TerminalDemoProps) {
+export default function TerminalDemo() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
 
-  // Scenarios matching the carousel features
+  // Scenarios for auto-rotation
   const scenarios = [
-    // Slide 0: Incident History
+    // Slide 0: Links Past Incidents to Code
     {
-      file: 'src/payments/stripe.ts',
+      file: 'terminal',
       output: [
         '$ crisk check',
         '',
-        '🔴 HIGH RISK',
+        'Analyzing changed files...',
+        '',
+        'HIGH RISK',
         '',
         'payments/stripe.ts',
-        '  ⚠️  Linked to 3 production incidents',
-        '  • #847: Payment timeout (Dec 2)',
-        '  • #712: Stripe API failure (Nov 18)',
-        '  • #623: Transaction rollback (Oct 29)',
+        '  Linked to 3 production incidents',
+        '  • #847: Payment timeout crash (Dec 2, 2024)',
+        '  • #712: Stripe API failure (Nov 18, 2024)',
+        '  • #623: Transaction rollback bug (Oct 29, 2024)',
         '',
-        '💡 Review incidents before modifying'
+        'Review linked issues before committing',
+        '',
+        'Analysis complete in 8.2s'
       ]
     },
-    // Slide 1: Co-Change Detection
+    // Slide 1: Detects Co-Change Patterns
     {
-      file: 'src/auth/login.ts',
+      file: 'terminal',
       output: [
         '$ crisk check',
         '',
-        '🟡 MEDIUM RISK',
+        'Analyzing changed files...',
+        '',
+        'MEDIUM RISK',
         '',
         'auth/login.ts',
-        '  ⚠️  Incomplete change detected',
-        '  • session.ts changes with this 82% of the time',
+        '  Incomplete change detected',
+        '  • session.ts changes with this file 82% of the time',
         '  • You modified login.ts but not session.ts',
         '',
-        '💡 Did you forget to update session.ts?'
+        'Consider updating session.ts to prevent issues',
+        '',
+        'Analysis complete in 6.7s'
       ]
     },
-    // Slide 2: Ownership Staleness
+    // Slide 2: Tracks Code Ownership
     {
-      file: 'src/database/migration.ts',
+      file: 'terminal',
       output: [
         '$ crisk check',
         '',
-        '🟡 MEDIUM RISK',
+        'Analyzing changed files...',
         '',
-        'database/migration.ts',
-        '  ⚠️  Stale code ownership',
-        '  • Last modified: 2 years ago',
-        '  • Original owner: Sarah (left team)',
+        'MEDIUM RISK',
+        '',
+        'core/email.go',
+        '  Unknown code ownership',
+        '  • sendEmail function: written by Johnny Chen',
+        '  • Johnny left team 2 years ago',
         '  • High complexity, zero recent changes',
         '',
-        '💡 Get backup review before pushing'
+        'Get backup review from current email system owner',
+        '',
+        'Analysis complete in 7.1s'
       ]
     },
-    // Slide 3: Repository-Specific Learning
+    // Slide 3: Repository-Specific Intelligence
     {
-      file: 'src/api/webhook.ts',
+      file: 'terminal',
       output: [
         '$ crisk check',
         '',
-        '✅ LOW RISK',
+        'Analyzing changed files...',
+        '',
+        'LOW RISK',
         '',
         'api/webhook.ts',
-        '  ✓ No incident history',
-        '  ✓ Active ownership (you: 89% commits)',
-        '  ✓ No co-change patterns detected',
+        '  No incident history',
+        '  Active ownership (you: 89% of commits)',
+        '  No co-change patterns detected',
         '',
-        '📊 Analysis: 10,247 commits, 156 incidents'
+        'Safe to proceed with standard review',
+        '',
+        'Analyzed 10,247 commits, 156 incidents',
+        'Analysis complete in 5.3s'
       ]
     }
   ]
 
-  // Sync with parent carousel
+  // Auto-rotate through scenarios every 4 seconds
   useEffect(() => {
-    if (activeSlide !== currentSlide) {
+    const timer = setInterval(() => {
       setIsTransitioning(true)
       setTimeout(() => {
-        setCurrentSlide(activeSlide)
+        setCurrentSlide((prev) => (prev + 1) % scenarios.length)
         setIsTransitioning(false)
       }, 200) // Quick fade transition
-    }
-  }, [activeSlide, currentSlide])
+    }, 4000) // Change scenario every 4 seconds
+
+    return () => clearInterval(timer)
+  }, [scenarios.length])
 
   const currentScenario = scenarios[currentSlide]
 
@@ -105,12 +120,12 @@ export default function TerminalDemo({ activeSlide }: TerminalDemoProps) {
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
           </div>
           <div className="ml-4 text-gray-400 text-xs font-mono">
-            terminal — {currentScenario.file}
+            terminal
           </div>
         </div>
 
         {/* Content */}
-        <div className={`p-6 font-mono text-sm h-[380px] transition-opacity duration-200 ${
+        <div className={`p-6 font-mono text-sm h-[420px] transition-opacity duration-200 ${
           isTransitioning ? 'opacity-0' : 'opacity-100'
         }`}>
           <div className="space-y-1">
@@ -118,7 +133,7 @@ export default function TerminalDemo({ activeSlide }: TerminalDemoProps) {
               // Command line
               if (line.startsWith('$')) {
                 return (
-                  <div key={index} className="text-green-400 mb-3">
+                  <div key={index} className="text-green-400 mb-4 font-semibold">
                     {line}
                   </div>
                 )
@@ -130,23 +145,23 @@ export default function TerminalDemo({ activeSlide }: TerminalDemoProps) {
               }
 
               // Status indicators
-              if (line.includes('🔴 HIGH RISK')) {
+              if (line === 'HIGH RISK') {
                 return (
-                  <div key={index} className="text-red-400 font-bold text-base mb-2">
+                  <div key={index} className="text-red-400 font-bold text-lg mb-3 tracking-wide">
                     {line}
                   </div>
                 )
               }
-              if (line.includes('🟡 MEDIUM RISK')) {
+              if (line === 'MEDIUM RISK') {
                 return (
-                  <div key={index} className="text-yellow-400 font-bold text-base mb-2">
+                  <div key={index} className="text-yellow-400 font-bold text-lg mb-3 tracking-wide">
                     {line}
                   </div>
                 )
               }
-              if (line.includes('✅ LOW RISK')) {
+              if (line === 'LOW RISK') {
                 return (
-                  <div key={index} className="text-green-400 font-bold text-base mb-2">
+                  <div key={index} className="text-green-400 font-bold text-lg mb-3 tracking-wide">
                     {line}
                   </div>
                 )
@@ -155,43 +170,54 @@ export default function TerminalDemo({ activeSlide }: TerminalDemoProps) {
               // File name
               if (line.endsWith('.ts') || line.endsWith('.tsx') || line.endsWith('.js')) {
                 return (
-                  <div key={index} className="text-blue-300 font-semibold mb-2">
+                  <div key={index} className="text-blue-300 font-semibold text-base mb-2">
                     {line}
                   </div>
                 )
               }
 
-              // Warning/info lines
-              if (line.includes('⚠️') || line.includes('•')) {
+              // Bullet points
+              if (line.includes('•')) {
                 return (
-                  <div key={index} className="text-gray-300 text-xs pl-2">
+                  <div key={index} className="text-gray-300 text-sm pl-2 leading-relaxed">
                     {line}
                   </div>
                 )
               }
 
-              // Success checks
-              if (line.includes('✓')) {
+              // Analysis complete line
+              if (line.includes('Analysis complete')) {
                 return (
-                  <div key={index} className="text-green-400 text-xs pl-2">
+                  <div key={index} className="text-gray-500 text-xs italic mt-2">
                     {line}
                   </div>
                 )
               }
 
-              // Recommendations
-              if (line.includes('💡')) {
+              // Analyzed stats
+              if (line.includes('Analyzed')) {
                 return (
-                  <div key={index} className="text-cyan-400 text-xs font-semibold mt-2">
+                  <div key={index} className="text-gray-500 text-xs">
                     {line}
                   </div>
                 )
               }
 
-              // Stats
-              if (line.includes('📊')) {
+              // Indented descriptive lines (start with spaces)
+              if (line.startsWith('  ') && !line.includes('•')) {
                 return (
-                  <div key={index} className="text-gray-500 text-xs mt-2">
+                  <div key={index} className="text-gray-300 text-sm pl-2">
+                    {line}
+                  </div>
+                )
+              }
+
+              // Main action lines (recommendations)
+              if (!line.startsWith(' ') && line !== '' && !line.startsWith('$') &&
+                  line !== 'HIGH RISK' && line !== 'MEDIUM RISK' && line !== 'LOW RISK' &&
+                  !line.endsWith('.ts') && !line.endsWith('.tsx') && !line.endsWith('.js')) {
+                return (
+                  <div key={index} className="text-cyan-300 text-sm font-medium mt-2">
                     {line}
                   </div>
                 )
@@ -199,7 +225,7 @@ export default function TerminalDemo({ activeSlide }: TerminalDemoProps) {
 
               // Default
               return (
-                <div key={index} className="text-gray-400">
+                <div key={index} className="text-gray-400 text-sm">
                   {line}
                 </div>
               )
