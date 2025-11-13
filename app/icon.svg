@@ -1,0 +1,10 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Deep slate background with rounded corners -->
+  <rect width="32" height="32" rx="4" fill="#0F172A"/>
+
+  <!-- White "cr" text centered -->
+  <text x="16" y="23" font-family="'Inter', -apple-system, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">cr</text>
+
+  <!-- Orange accent dot -->
+  <circle cx="20" cy="11" r="2" fill="#F97316"/>
+</svg>
