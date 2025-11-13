@@ -42,7 +42,7 @@ export default function TerminalAnimation({ lines, onComplete }: TerminalAnimati
           setVisibleLines(prev => prev + 1);
           setCurrentText('');
         }
-      }, 20); // 20ms per character for smooth typing
+      }, 5); // 5ms per character for faster typing
 
       return () => clearInterval(typeInterval);
     }, delay);

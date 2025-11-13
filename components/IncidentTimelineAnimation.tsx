@@ -13,25 +13,25 @@ export default function IncidentTimelineAnimation() {
   // Terminal lines for the investigation phase
   const terminalLines = [
     { text: 'crisk check components/PaymentProcessor.tsx', delay: 0, type: 'command' as const },
-    { text: '', delay: 500, type: 'output' as const },
-    { text: '🔍 Analyzing your changes...', delay: 800, type: 'output' as const },
     { text: '', delay: 300, type: 'output' as const },
-    { text: '⚠️  WARNING: HIGH RISK DETECTED', delay: 1200, type: 'warning' as const },
-    { text: '', delay: 300, type: 'output' as const },
-    { text: '📊 Found 3 past incidents in this file:', delay: 800, type: 'output' as const },
-    { text: '  • Issue #847: "Payment processor crashes on null user"', delay: 900, type: 'highlight' as const },
-    { text: '  • Issue #923: "Double charging customers"', delay: 700, type: 'output' as const },
-    { text: '  • Issue #1049: "Refunds failing silently"', delay: 700, type: 'output' as const },
-    { text: '', delay: 300, type: 'output' as const },
-    { text: '👥 Code Ownership:', delay: 800, type: 'output' as const },
-    { text: '  • Original author: @sarah (inactive, last commit 8 months ago)', delay: 900, type: 'warning' as const },
-    { text: '  • Current maintainer: @james', delay: 700, type: 'success' as const },
-    { text: '', delay: 300, type: 'output' as const },
-    { text: '🔗 This file is coupled with:', delay: 800, type: 'output' as const },
-    { text: '  • components/OrderConfirmation.tsx (changes together 87% of time)', delay: 900, type: 'highlight' as const },
-    { text: '', delay: 300, type: 'output' as const },
-    { text: '⚠️  RISK LEVEL: HIGH (85% confidence)', delay: 1000, type: 'warning' as const },
-    { text: '⏱️  Analysis completed in 5.8 seconds', delay: 500, type: 'success' as const },
+    { text: '🔍 Analyzing your changes...', delay: 400, type: 'output' as const },
+    { text: '', delay: 200, type: 'output' as const },
+    { text: '⚠️  WARNING: HIGH RISK DETECTED', delay: 600, type: 'warning' as const },
+    { text: '', delay: 200, type: 'output' as const },
+    { text: '📊 Found 3 past incidents in this file:', delay: 400, type: 'output' as const },
+    { text: '  • Issue #847: "Payment processor crashes on null user"', delay: 500, type: 'highlight' as const },
+    { text: '  • Issue #923: "Double charging customers"', delay: 400, type: 'output' as const },
+    { text: '  • Issue #1049: "Refunds failing silently"', delay: 400, type: 'output' as const },
+    { text: '', delay: 200, type: 'output' as const },
+    { text: '👥 Code Ownership:', delay: 400, type: 'output' as const },
+    { text: '  • Original author: @sarah (inactive, last commit 8 months ago)', delay: 500, type: 'warning' as const },
+    { text: '  • Current maintainer: @james', delay: 400, type: 'success' as const },
+    { text: '', delay: 200, type: 'output' as const },
+    { text: '🔗 This file is coupled with:', delay: 400, type: 'output' as const },
+    { text: '  • components/OrderConfirmation.tsx (changes together 87% of time)', delay: 500, type: 'highlight' as const },
+    { text: '', delay: 200, type: 'output' as const },
+    { text: '⚠️  RISK LEVEL: HIGH (85% confidence)', delay: 500, type: 'warning' as const },
+    { text: '⏱️  Analysis completed in 5.8 seconds', delay: 300, type: 'success' as const },
   ];
 
   // Stage progression logic
@@ -41,13 +41,13 @@ export default function IncidentTimelineAnimation() {
     let timer: NodeJS.Timeout;
 
     if (stage === 'setup') {
-      timer = setTimeout(() => setStage('investigation'), 8000); // 8 seconds
+      timer = setTimeout(() => setStage('investigation'), 5000); // 5 seconds
     } else if (stage === 'investigation') {
-      timer = setTimeout(() => setStage('action'), 16000); // 16 seconds
+      timer = setTimeout(() => setStage('action'), 15000); // 15 seconds (faster typing + longer display time)
     } else if (stage === 'action') {
-      timer = setTimeout(() => setStage('outcome'), 9000); // 9 seconds
+      timer = setTimeout(() => setStage('outcome'), 6000); // 6 seconds
     } else if (stage === 'outcome') {
-      timer = setTimeout(() => setStage('reset'), 6000); // 6 seconds
+      timer = setTimeout(() => setStage('reset'), 4000); // 4 seconds
     } else if (stage === 'reset') {
       timer = setTimeout(() => setStage('setup'), 1500); // 1.5 seconds
     }
@@ -115,25 +115,15 @@ export default function IncidentTimelineAnimation() {
               transition={{ delay: 1.5 }}
               className="flex items-start justify-center gap-8"
             >
-              {/* Simple Developer SVG */}
+              {/* Developer Icon */}
               <div className="flex-shrink-0">
-                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Head */}
-                  <circle cx="60" cy="35" r="18" fill="#E5E7EB" stroke="#6B7280" strokeWidth="2"/>
-
-                  {/* Body */}
-                  <path d="M 45 53 Q 45 70 45 75 L 45 85 M 75 53 Q 75 70 75 75 L 75 85" stroke="#6B7280" strokeWidth="2" fill="none"/>
-                  <line x1="45" y1="53" x2="75" y2="53" stroke="#6B7280" strokeWidth="2"/>
-                  <path d="M 45 65 L 35 75 M 75 65 L 85 75" stroke="#6B7280" strokeWidth="2" strokeLinecap="round"/>
-
-                  {/* Legs */}
-                  <path d="M 45 85 L 40 100 M 75 85 L 80 100" stroke="#6B7280" strokeWidth="2" strokeLinecap="round"/>
-
-                  {/* Laptop */}
-                  <rect x="35" y="75" width="50" height="3" fill="#4B5563" rx="1"/>
-                  <path d="M 40 75 L 43 65 L 77 65 L 80 75 Z" fill="#9CA3AF" stroke="#4B5563" strokeWidth="1.5"/>
-                  <rect x="46" y="67" width="28" height="6" fill="#1F2937"/>
-                </svg>
+                <img
+                  src="https://cdn-icons-png.freepik.com/512/10488/10488169.png"
+                  alt="Developer"
+                  width={120}
+                  height={120}
+                  className="w-[120px] h-[120px] object-contain"
+                />
               </div>
 
               {/* Thought Bubble */}
@@ -272,32 +262,42 @@ export default function IncidentTimelineAnimation() {
               transition={{ delay: 0.3 }}
               className="grid md:grid-cols-2 gap-4"
             >
-              {/* Without CodeRisk */}
-              <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6">
-                <div className="text-center mb-3">
-                  <span className="text-3xl">❌</span>
-                </div>
-                <h4 className="font-bold text-red-900 mb-3 text-center">Without CodeRisk</h4>
+              {/* Before CodeRisk */}
+              <div className="bg-red-50 rounded-lg p-6 shadow-md">
+                <h4 className="font-bold text-red-900 mb-4 text-center flex items-center justify-center gap-2">
+                  <span>Before</span>
+                  <svg width="80" height="24" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-6 w-auto">
+                    <text x="10" y="42" fontFamily="'Inter', -apple-system, sans-serif" fontSize="32" fontWeight="700" fill="#7F1D1D" letterSpacing="-0.03em">
+                      coder<tspan>ı</tspan>sk
+                    </text>
+                    <circle cx="96.7" cy="18" r="3.5" fill="#F97316"/>
+                  </svg>
+                </h4>
                 <ul className="space-y-2 text-sm text-red-800">
-                  <li>✗ PR merged without full context</li>
-                  <li>✗ Payment processor crashes in prod</li>
-                  <li>✗ Customers can't check out</li>
-                  <li>✗ Emergency hotfix at 2 AM</li>
-                  <li>✗ Lost revenue & trust</li>
+                  <li>✗ Breaking changes slip through</li>
+                  <li>✗ Production fires at 2 AM</li>
+                  <li>✗ Hours debugging why it broke</li>
+                  <li>✗ Team trust erodes</li>
+                  <li>✗ Lost revenue and customers</li>
                 </ul>
               </div>
 
-              {/* With CodeRisk */}
-              <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6">
-                <div className="text-center mb-3">
-                  <span className="text-3xl">✅</span>
-                </div>
-                <h4 className="font-bold text-green-900 mb-3 text-center">With CodeRisk</h4>
+              {/* After CodeRisk */}
+              <div className="bg-green-50 rounded-lg p-6 shadow-md">
+                <h4 className="font-bold text-green-900 mb-4 text-center flex items-center justify-center gap-2">
+                  <span>After</span>
+                  <svg width="80" height="24" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-6 w-auto">
+                    <text x="10" y="42" fontFamily="'Inter', -apple-system, sans-serif" fontSize="32" fontWeight="700" fill="#14532D" letterSpacing="-0.03em">
+                      coder<tspan>ı</tspan>sk
+                    </text>
+                    <circle cx="96.7" cy="18" r="3.5" fill="#F97316"/>
+                  </svg>
+                </h4>
                 <ul className="space-y-2 text-sm text-green-800">
-                  <li>✓ Risk caught before commit</li>
-                  <li>✓ Fixed with proper context</li>
-                  <li>✓ Tests added for regression</li>
-                  <li>✓ Smooth deployment</li>
+                  <li>✓ Catch risks in seconds</li>
+                  <li>✓ Ship with full context</li>
+                  <li>✓ Deploy confidently</li>
+                  <li>✓ Team moves faster</li>
                   <li>✓ Sleep soundly tonight</li>
                 </ul>
               </div>
@@ -314,13 +314,6 @@ export default function IncidentTimelineAnimation() {
             transition={{ duration: 1 }}
             className="text-center py-20"
           >
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-              className="text-4xl"
-            >
-              🔄
-            </motion.div>
           </motion.div>
         )}
         </AnimatePresence>
