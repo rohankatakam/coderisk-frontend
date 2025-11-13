@@ -55,6 +55,11 @@ export default function Home() {
               </p>
             </div>
 
+            {/* Mobile Animation - Between subtitle and CTA */}
+            <div className="lg:hidden">
+              <MobileHeroSlides />
+            </div>
+
             {/* CTA Buttons */}
             <div className="flex gap-4 items-center pt-2">
               <a href="https://calendly.com/rohankatakam" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-[#F97316] text-white px-7 py-3.5 rounded-lg text-base font-bold hover:bg-[#EA580C] transition-all shadow-lg hover:shadow-xl">
@@ -70,11 +75,6 @@ export default function Home() {
           <div className="lg:block hidden">
             <IncidentTimelineAnimation />
           </div>
-        </div>
-
-        {/* Mobile Slides - After Hero Content */}
-        <div className="lg:hidden mt-12">
-          <MobileHeroSlides />
         </div>
 
         {/* Social Proof Section */}
