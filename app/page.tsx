@@ -4,7 +4,7 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import IncidentTimelineAnimation from '@/components/IncidentTimelineAnimation'
 import MobileHeroSlides from '@/components/MobileHeroSlides'
 import FeaturesSection from '@/components/FeaturesSection'
-import ArchitectureDiagram from '@/components/ArchitectureDiagram'
+import AnimatedHowItWorks from '@/components/AnimatedHowItWorks'
 
 export default function Home() {
   return (
@@ -164,24 +164,7 @@ export default function Home() {
         </div>
 
         {/* How It Works */}
-        <div className="pt-32 pb-16 bg-gradient-to-b from-white to-gray-50">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center space-y-4 mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold">
-                How It Works
-              </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                AI-powered risk detection in under 10 seconds
-              </p>
-            </div>
-
-            {/* Architecture Diagram */}
-            <div className="max-w-7xl mx-auto mb-16">
-              <ArchitectureDiagram />
-            </div>
-
-          </div>
-        </div>
+        <AnimatedHowItWorks />
 
         {/* Pricing Section */}
         <div className="pt-32 pb-16">
