@@ -1,7 +1,6 @@
 'use client'
 
 import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
-import TerminalDemo from '@/components/TerminalDemo'
 import IncidentTimelineAnimation from '@/components/IncidentTimelineAnimation'
 import FeaturesSection from '@/components/FeaturesSection'
 import ArchitectureDiagram from '@/components/ArchitectureDiagram'
@@ -23,10 +22,6 @@ export default function Home() {
           <div className="flex gap-6 items-center">
             <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-700 hover:text-[#0F172A] transition-colors">
               Thesis
-            </a>
-            <a href="#" className="text-sm text-gray-700 hover:text-[#0F172A] transition-colors flex items-center gap-1">
-              Whitepaper
-              <span className="text-[10px] bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded font-medium">Coming Soon</span>
             </a>
             <SignedOut>
               <SignInButton mode="modal">

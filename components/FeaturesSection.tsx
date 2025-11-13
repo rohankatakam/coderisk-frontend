@@ -42,8 +42,8 @@ export default function FeaturesSection() {
 
   return (
     <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
-      {/* Left: Terminal Demo - Sticky */}
-      <div className="lg:sticky lg:top-32">
+      {/* Left: Terminal Demo - Sticky (Desktop Only) */}
+      <div className="hidden lg:block lg:sticky lg:top-32">
         <ScrollAwareTerminal activeScenario={activeFeature} />
       </div>
 
@@ -64,9 +64,15 @@ export default function FeaturesSection() {
             </div>
             <div className="text-blue-900 font-bold text-lg">Learn From Past Incidents</div>
           </div>
-          <p className="text-base text-blue-800 leading-relaxed">
+          <p className="text-base text-blue-800 leading-relaxed mb-4">
             Automatically connects your changes to past production incidents in the same files. Know what went wrong before, so history doesn't repeat.
           </p>
+
+          {/* Mobile Terminal Snippet */}
+          <div className="lg:hidden bg-black rounded-lg p-4 font-mono text-xs overflow-x-auto">
+            <div className="text-cyan-400">Linked to 3 production incidents</div>
+            <div className="text-gray-400 mt-1">• #847: Payment timeout crash</div>
+          </div>
         </div>
 
         {/* Feature 2: Know Who to Contact */}
@@ -84,9 +90,15 @@ export default function FeaturesSection() {
             </div>
             <div className="text-purple-900 font-bold text-lg">Know Who to Contact</div>
           </div>
-          <p className="text-base text-purple-800 leading-relaxed">
+          <p className="text-base text-purple-800 leading-relaxed mb-4">
             Identifies current maintainers and original authors. Reach out for context before you commit, not after the damage is done.
           </p>
+
+          {/* Mobile Terminal Snippet */}
+          <div className="lg:hidden bg-black rounded-lg p-4 font-mono text-xs overflow-x-auto">
+            <div className="text-purple-400">Current owner: @sarah-dev</div>
+            <div className="text-gray-400 mt-1">Original author: @mike-tech</div>
+          </div>
         </div>
 
         {/* Feature 3: Catch Coupled Dependencies */}
@@ -104,9 +116,15 @@ export default function FeaturesSection() {
             </div>
             <div className="text-green-900 font-bold text-lg">Catch Coupled Dependencies</div>
           </div>
-          <p className="text-base text-green-800 leading-relaxed">
+          <p className="text-base text-green-800 leading-relaxed mb-4">
             Detects files that frequently change together. Update all related files in one go—avoid the incomplete change that breaks production.
           </p>
+
+          {/* Mobile Terminal Snippet */}
+          <div className="lg:hidden bg-black rounded-lg p-4 font-mono text-xs overflow-x-auto">
+            <div className="text-yellow-400">⚠ Missing co-change file</div>
+            <div className="text-gray-400 mt-1">Consider updating: config.ts</div>
+          </div>
         </div>
 
         {/* Feature 4: Results in Under 10 Seconds */}
@@ -124,9 +142,15 @@ export default function FeaturesSection() {
             </div>
             <div className="text-orange-900 font-bold text-lg">Results in Under 10 Seconds</div>
           </div>
-          <p className="text-base text-orange-800 leading-relaxed">
+          <p className="text-base text-orange-800 leading-relaxed mb-4">
             Complete risk analysis faster than you can context-switch. Stay in flow, ship with confidence.
           </p>
+
+          {/* Mobile Terminal Snippet */}
+          <div className="lg:hidden bg-black rounded-lg p-4 font-mono text-xs overflow-x-auto">
+            <div className="text-green-400">✓ Analysis complete: 8.2s</div>
+            <div className="text-gray-400 mt-1">Risk Level: MEDIUM</div>
+          </div>
         </div>
       </div>
     </div>
