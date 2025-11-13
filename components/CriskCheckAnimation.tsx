@@ -76,7 +76,7 @@ export default function CriskCheckAnimation({ isPaused, onTogglePause }: CriskCh
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="text-sm font-semibold text-slate-700"
+              className="text-sm font-semibold text-[#475569]"
             >
               1. Find Files in Graph
             </motion.p>
@@ -88,7 +88,7 @@ export default function CriskCheckAnimation({ isPaused, onTogglePause }: CriskCh
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="text-sm font-semibold text-orange-700"
+              className="text-sm font-semibold text-[#475569]"
             >
               2. Agentic Search
             </motion.p>
@@ -100,7 +100,7 @@ export default function CriskCheckAnimation({ isPaused, onTogglePause }: CriskCh
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="text-sm font-semibold text-green-700"
+              className="text-sm font-semibold text-[#475569]"
             >
               3. Risk Report
             </motion.p>

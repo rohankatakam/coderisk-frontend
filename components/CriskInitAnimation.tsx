@@ -75,7 +75,7 @@ export default function CriskInitAnimation({ isPaused, onTogglePause }: CriskIni
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="text-sm font-semibold text-slate-700"
+              className="text-sm font-semibold text-[#475569]"
             >
               1. Code Structure
             </motion.p>
@@ -87,7 +87,7 @@ export default function CriskInitAnimation({ isPaused, onTogglePause }: CriskIni
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="text-sm font-semibold text-amber-700"
+              className="text-sm font-semibold text-[#475569]"
             >
               2. Commit & PR History
             </motion.p>
@@ -99,7 +99,7 @@ export default function CriskInitAnimation({ isPaused, onTogglePause }: CriskIni
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="text-sm font-semibold text-blue-700"
+              className="text-sm font-semibold text-[#475569]"
             >
               3. Incident Intelligence
             </motion.p>
