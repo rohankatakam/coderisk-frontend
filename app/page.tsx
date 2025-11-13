@@ -14,7 +14,7 @@ export default function Home() {
               <text x="10" y="42" fontFamily="'Inter', -apple-system, sans-serif" fontSize="32" fontWeight="700" fill="#0F172A" letterSpacing="-0.03em">
                 coder<tspan>ı</tspan>sk
               </text>
-              <circle cx="91.5" cy="19" r="4.5" fill="#F97316"/>
+              <circle cx="96.7" cy="18" r="3.5" fill="#F97316"/>
             </svg>
           </div>
           <div className="flex gap-6 items-center">
@@ -63,11 +63,11 @@ export default function Home() {
 
             {/* CTA Buttons */}
             <div className="flex gap-4 items-center pt-2">
-              <a href="#" className="inline-flex items-center justify-center bg-[#F97316] text-white px-7 py-3.5 rounded-lg text-base font-bold hover:bg-[#EA580C] transition-all shadow-lg hover:shadow-xl lowercase">
-                book a demo
+              <a href="#" className="inline-flex items-center justify-center bg-[#F97316] text-white px-7 py-3.5 rounded-lg text-base font-bold hover:bg-[#EA580C] transition-all shadow-lg hover:shadow-xl">
+                Book a Demo
               </a>
-              <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border-2 border-[#0F172A] text-[#0F172A] px-7 py-3.5 rounded-lg text-base font-bold hover:bg-[#0F172A] hover:text-white transition-all lowercase">
-                read our thesis
+              <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border-2 border-[#0F172A] text-[#0F172A] px-7 py-3.5 rounded-lg text-base font-bold hover:bg-[#0F172A] hover:text-white transition-all">
+                Read Our Thesis
               </a>
             </div>
           </div>
@@ -371,8 +371,8 @@ export default function Home() {
                       <span>Priority support</span>
                     </li>
                   </ul>
-                  <a href="#" className="block w-full text-center bg-[#F97316] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#EA580C] transition-all shadow-lg lowercase">
-                    book a demo
+                  <a href="#" className="block w-full text-center bg-[#F97316] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#EA580C] transition-all shadow-lg">
+                    Book a Demo
                   </a>
                 </div>
               </div>
@@ -431,11 +431,11 @@ export default function Home() {
               Join teams preventing regressions before code review
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <a href="#" className="inline-flex items-center justify-center bg-[#F97316] text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-[#EA580C] transition-all shadow-lg hover:shadow-xl lowercase">
-                book a demo
+              <a href="#" className="inline-flex items-center justify-center bg-[#F97316] text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-[#EA580C] transition-all shadow-lg hover:shadow-xl">
+                Book a Demo
               </a>
-              <a href="mailto:rohan@coderisk.dev" className="inline-flex items-center justify-center border-2 border-[#0F172A] text-[#0F172A] px-8 py-4 rounded-lg text-lg font-bold hover:bg-[#0F172A] hover:text-white transition-all lowercase">
-                contact us
+              <a href="mailto:rohan@coderisk.dev" className="inline-flex items-center justify-center border-2 border-[#0F172A] text-[#0F172A] px-8 py-4 rounded-lg text-lg font-bold hover:bg-[#0F172A] hover:text-white transition-all">
+                Contact Us
               </a>
             </div>
           </div>
