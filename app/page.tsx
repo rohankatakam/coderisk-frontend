@@ -2,6 +2,7 @@
 
 import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import TerminalDemo from '@/components/TerminalDemo'
+import IncidentTimelineAnimation from '@/components/IncidentTimelineAnimation'
 
 export default function Home() {
   return (
@@ -72,9 +73,9 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Side - Terminal Demo */}
+          {/* Right Side - Interactive Animation */}
           <div className="lg:block hidden">
-            <TerminalDemo />
+            <IncidentTimelineAnimation />
           </div>
         </div>
 
@@ -82,7 +83,7 @@ export default function Home() {
         <div className="pt-24 pb-20">
           <div className="text-center space-y-10">
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
-              Problem Validated With Engineers At
+              Validated With Engineers At
             </p>
             <div className="flex flex-wrap justify-center items-center gap-16 opacity-50">
               <a
@@ -160,8 +161,15 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Pain Points Grid */}
-          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+          {/* Terminal Demo + Pain Points */}
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left: Terminal Demo */}
+            <div className="lg:sticky lg:top-32">
+              <TerminalDemo />
+            </div>
+
+            {/* Right: Pain Points Grid */}
+            <div className="space-y-6">
             <div className="bg-gradient-to-br from-red-50 to-orange-50 border border-red-200 rounded-xl p-8 hover:shadow-lg transition-shadow">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -214,10 +222,11 @@ export default function Home() {
                 "Didn't we just fix this file last week? Why does it keep breaking?"
               </p>
             </div>
+            </div>
           </div>
 
           {/* Solution */}
-          <div className="text-center space-y-6 pt-12">
+          <div className="text-center space-y-6 pt-12 max-w-5xl mx-auto">
             <h3 className="text-3xl md:text-4xl font-bold">
               CodeRisk catches these before you commit
             </h3>
@@ -239,39 +248,35 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="max-w-5xl mx-auto space-y-8">
-              <div className="flex gap-8 items-start bg-white rounded-xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-blue-600 to-cyan-500 text-white rounded-2xl flex items-center justify-center font-bold text-2xl shadow-lg">
-                  1
-                </div>
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-bold">Learns From Your Past Incidents</h3>
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    CodeRisk builds connections between your past production incidents and the code that caused them—so you never repeat the same mistake twice.
+            <div className="max-w-5xl mx-auto">
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-500 text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg mb-4">
+                    1
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">Learns From Your Past</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Connects past incidents to the code that caused them
                   </p>
                 </div>
-              </div>
 
-              <div className="flex gap-8 items-start bg-white rounded-xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-500 text-white rounded-2xl flex items-center justify-center font-bold text-2xl shadow-lg">
-                  2
-                </div>
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-bold">Check Your Changes</h3>
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    Before committing, run a quick check. Get instant warnings about past incidents, related files, and ownership issues—in seconds.
+                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-500 text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg mb-4">
+                    2
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">Check Your Changes</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Get instant warnings in seconds before you commit
                   </p>
                 </div>
-              </div>
 
-              <div className="flex gap-8 items-start bg-white rounded-xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-orange-600 to-red-500 text-white rounded-2xl flex items-center justify-center font-bold text-2xl shadow-lg">
-                  3
-                </div>
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-bold">Ship With Confidence</h3>
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    Fix issues before anyone else sees them. No embarrassing code review comments. No production fires.
+                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-orange-600 to-red-500 text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg mb-4">
+                    3
+                  </div>
+                  <h3 className="text-lg font-bold mb-2">Ship With Confidence</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Fix issues before code review, prevent production fires
                   </p>
                 </div>
               </div>
