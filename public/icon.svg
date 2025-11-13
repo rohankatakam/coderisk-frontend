@@ -1,7 +1,0 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Shield shape with warning symbol -->
-  <path d="M16 2L4 8V14C4 21 8.5 27.5 16 30C23.5 27.5 28 21 28 14V8L16 2Z" fill="#000000"/>
-  <!-- Exclamation mark -->
-  <rect x="15" y="10" width="2" height="8" fill="#FFFFFF" rx="1"/>
-  <circle cx="16" cy="22" r="1.5" fill="#FFFFFF"/>
-</svg>
