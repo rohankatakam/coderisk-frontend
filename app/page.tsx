@@ -63,7 +63,7 @@ export default function Home() {
 
             {/* CTA Buttons */}
             <div className="flex gap-4 items-center pt-2">
-              <a href="#" className="inline-flex items-center justify-center bg-[#F97316] text-white px-7 py-3.5 rounded-lg text-base font-bold hover:bg-[#EA580C] transition-all shadow-lg hover:shadow-xl">
+              <a href="https://calendly.com/rohankatakam" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-[#F97316] text-white px-7 py-3.5 rounded-lg text-base font-bold hover:bg-[#EA580C] transition-all shadow-lg hover:shadow-xl">
                 Book a Demo
               </a>
               <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border-2 border-[#0F172A] text-[#0F172A] px-7 py-3.5 rounded-lg text-base font-bold hover:bg-[#0F172A] hover:text-white transition-all">
@@ -371,7 +371,7 @@ export default function Home() {
                       <span>Priority support</span>
                     </li>
                   </ul>
-                  <a href="#" className="block w-full text-center bg-[#F97316] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#EA580C] transition-all shadow-lg">
+                  <a href="https://calendly.com/rohankatakam" target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-[#F97316] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#EA580C] transition-all shadow-lg">
                     Book a Demo
                   </a>
                 </div>
@@ -431,7 +431,7 @@ export default function Home() {
               Join teams preventing regressions before code review
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <a href="#" className="inline-flex items-center justify-center bg-[#F97316] text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-[#EA580C] transition-all shadow-lg hover:shadow-xl">
+              <a href="https://calendly.com/rohankatakam" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-[#F97316] text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-[#EA580C] transition-all shadow-lg hover:shadow-xl">
                 Book a Demo
               </a>
               <a href="mailto:rohan@coderisk.dev" className="inline-flex items-center justify-center border-2 border-[#0F172A] text-[#0F172A] px-8 py-4 rounded-lg text-lg font-bold hover:bg-[#0F172A] hover:text-white transition-all">
