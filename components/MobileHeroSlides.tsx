@@ -50,7 +50,7 @@ export default function MobileHeroSlides() {
   };
 
   return (
-    <div className="relative w-full space-y-4">
+    <div className="relative w-full">
       {/* Play/Pause Button */}
       <button
         onClick={() => setIsPaused(!isPaused)}
@@ -69,7 +69,9 @@ export default function MobileHeroSlides() {
         )}
       </button>
 
-      <AnimatePresence mode="wait">
+      {/* Fixed height container */}
+      <div className="min-h-[420px] flex items-start">
+        <AnimatePresence mode="wait">
         {/* Stage 1: The Setup */}
         {stage === 'setup' && (
           <motion.div
@@ -78,7 +80,7 @@ export default function MobileHeroSlides() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="space-y-4"
+            className="space-y-4 w-full"
           >
             {/* Code change visualization */}
             <div className="bg-[#1e1e1e] rounded-lg p-4 font-mono text-xs shadow-xl">
@@ -136,6 +138,7 @@ export default function MobileHeroSlides() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
+            className="w-full"
           >
             <div className="bg-[#1e1e1e] rounded-lg shadow-2xl overflow-hidden font-mono text-xs">
               {/* Terminal Header */}
@@ -175,6 +178,7 @@ export default function MobileHeroSlides() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
+            className="w-full"
           >
             <div className="bg-[#1e1e1e] rounded-lg shadow-2xl overflow-hidden font-mono text-xs">
               {/* Terminal Header */}
@@ -212,6 +216,7 @@ export default function MobileHeroSlides() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
+            className="w-full"
           >
             <div className="bg-[#1e1e1e] rounded-lg shadow-2xl overflow-hidden font-mono text-xs">
               {/* Terminal Header */}
@@ -249,7 +254,7 @@ export default function MobileHeroSlides() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="space-y-3"
+            className="space-y-3 w-full"
           >
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -312,6 +317,7 @@ export default function MobileHeroSlides() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
+            className="w-full"
           >
             <div className="grid grid-cols-2 gap-3">
               {/* Before CodeRisk */}
@@ -362,11 +368,12 @@ export default function MobileHeroSlides() {
             initial={{ opacity: 1 }}
             animate={{ opacity: 0 }}
             transition={{ duration: 1 }}
-            className="text-center py-20"
+            className="text-center py-20 w-full"
           >
           </motion.div>
         )}
-      </AnimatePresence>
+        </AnimatePresence>
+      </div>
     </div>
   );
 }
