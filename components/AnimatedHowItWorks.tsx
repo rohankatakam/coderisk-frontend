@@ -13,8 +13,15 @@ export default function AnimatedHowItWorks() {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4">
-            How CodeRisk Works
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4 flex items-center justify-center gap-3">
+            <span>How</span>
+            <svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="inline-block h-12 md:h-14">
+              <text x="10" y="42" fontFamily="'Inter', -apple-system, sans-serif" fontSize="32" fontWeight="700" fill="currentColor" letterSpacing="-0.03em">
+                coder<tspan>ı</tspan>sk
+              </text>
+              <circle cx="96.7" cy="18" r="3.5" fill="#F97316"/>
+            </svg>
+            <span>Works</span>
           </h2>
           <p className="text-lg text-[#475569] max-w-2xl mx-auto">
             Two powerful commands that transform your development workflow
