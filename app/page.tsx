@@ -65,10 +65,15 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Side - Interactive Animation */}
+          {/* Right Side - Interactive Animation (Desktop) */}
           <div className="lg:block hidden">
             <IncidentTimelineAnimation />
           </div>
+        </div>
+
+        {/* Mobile Animation - After Hero Content */}
+        <div className="lg:hidden mt-12">
+          <IncidentTimelineAnimation />
         </div>
 
         {/* Social Proof Section */}

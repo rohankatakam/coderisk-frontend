@@ -78,7 +78,7 @@ export default function TerminalAnimation({ lines, onComplete }: TerminalAnimati
       </div>
 
       {/* Terminal Content */}
-      <div className="p-4 min-h-[450px] max-h-[500px] overflow-auto">
+      <div className="p-4 min-h-[450px] max-h-[500px] overflow-auto space-y-1">
         <AnimatePresence>
           {lines.slice(0, visibleLines).map((line, index) => (
             <motion.div
@@ -86,7 +86,7 @@ export default function TerminalAnimation({ lines, onComplete }: TerminalAnimati
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.1 }}
-              className={`${getLineColor(line.type)} leading-relaxed`}
+              className={`${getLineColor(line.type)} ${line.text ? '' : 'h-0'}`}
             >
               {line.type === 'command' && <span className="text-gray-500">$ </span>}
               {line.text}
@@ -97,7 +97,7 @@ export default function TerminalAnimation({ lines, onComplete }: TerminalAnimati
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className={`${getLineColor(lines[visibleLines]?.type)} leading-relaxed`}
+              className={`${getLineColor(lines[visibleLines]?.type)}`}
             >
               {lines[visibleLines]?.type === 'command' && <span className="text-gray-500">$ </span>}
               {currentText}

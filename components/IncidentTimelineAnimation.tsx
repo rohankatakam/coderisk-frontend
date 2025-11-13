@@ -14,24 +14,24 @@ export default function IncidentTimelineAnimation() {
   const terminalLines = [
     { text: 'crisk check components/PaymentProcessor.tsx', delay: 0, type: 'command' as const },
     { text: '', delay: 300, type: 'output' as const },
-    { text: '🔍 Analyzing your changes...', delay: 400, type: 'output' as const },
+    { text: 'Analyzing your changes...', delay: 400, type: 'output' as const },
     { text: '', delay: 200, type: 'output' as const },
-    { text: '⚠️  WARNING: HIGH RISK DETECTED', delay: 600, type: 'warning' as const },
+    { text: 'WARNING: HIGH RISK DETECTED', delay: 600, type: 'warning' as const },
     { text: '', delay: 200, type: 'output' as const },
-    { text: '📊 Found 3 past incidents in this file:', delay: 400, type: 'output' as const },
+    { text: 'Found 3 past incidents in this file:', delay: 400, type: 'output' as const },
     { text: '  • Issue #847: "Payment processor crashes on null user"', delay: 500, type: 'highlight' as const },
     { text: '  • Issue #923: "Double charging customers"', delay: 400, type: 'output' as const },
     { text: '  • Issue #1049: "Refunds failing silently"', delay: 400, type: 'output' as const },
     { text: '', delay: 200, type: 'output' as const },
-    { text: '👥 Code Ownership:', delay: 400, type: 'output' as const },
+    { text: 'Code Ownership:', delay: 400, type: 'output' as const },
     { text: '  • Original author: @sarah (inactive, last commit 8 months ago)', delay: 500, type: 'warning' as const },
     { text: '  • Current maintainer: @james', delay: 400, type: 'success' as const },
     { text: '', delay: 200, type: 'output' as const },
-    { text: '🔗 This file is coupled with:', delay: 400, type: 'output' as const },
+    { text: 'This file is coupled with:', delay: 400, type: 'output' as const },
     { text: '  • components/OrderConfirmation.tsx (changes together 87% of time)', delay: 500, type: 'highlight' as const },
     { text: '', delay: 200, type: 'output' as const },
-    { text: '⚠️  RISK LEVEL: HIGH (85% confidence)', delay: 500, type: 'warning' as const },
-    { text: '⏱️  Analysis completed in 5.8 seconds', delay: 300, type: 'success' as const },
+    { text: 'RISK LEVEL: HIGH (85% confidence)', delay: 500, type: 'warning' as const },
+    { text: 'Analysis completed in 5.8 seconds', delay: 300, type: 'success' as const },
   ];
 
   // Stage progression logic
@@ -96,7 +96,6 @@ export default function IncidentTimelineAnimation() {
               className="bg-[#1e1e1e] rounded-lg p-6 font-mono text-sm shadow-xl"
             >
               <div className="flex items-center gap-2 mb-4 text-gray-400 text-xs">
-                <span>📝</span>
                 <span>components/PaymentProcessor.tsx</span>
               </div>
               <div className="space-y-1">
