@@ -46,7 +46,7 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
   return (
     <div className="w-full h-full flex flex-col">
       {/* Header */}
-      <div className="mb-6">
+      <div className="mb-4">
         <h3 className="text-2xl font-bold text-[#0F172A] mb-2">
           crisk check: Real-Time Analysis
         </h3>
@@ -91,7 +91,7 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
       </div>
 
       {/* Animation Container */}
-      <div className="flex-1 relative bg-white rounded-lg p-4 overflow-hidden min-h-[600px]">
+      <div className="flex-1 relative overflow-hidden">
 
         <AnimatePresence mode="wait">
           {/* Stage 1: Detect Changes & Find in Graph */}
@@ -134,7 +134,6 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.8 }}
-                className="bg-white rounded-md p-4 border border-slate-200"
               >
                 <svg viewBox="0 0 400 200" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
                   {/* File nodes */}

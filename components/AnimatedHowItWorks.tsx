@@ -34,14 +34,14 @@ export default function AnimatedHowItWorks() {
         {/* Animations Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
           {/* crisk init Animation */}
-          <div className="min-h-[700px] md:min-h-[800px] flex items-start">
+          <div className="flex items-start">
             <div className="w-full h-full">
               <CriskInitAnimation isPaused={isPaused} />
             </div>
           </div>
 
           {/* crisk check Animation */}
-          <div className="min-h-[700px] md:min-h-[800px] flex items-start">
+          <div className="flex items-start">
             <div className="w-full h-full">
               <CriskCheckAnimation isPaused={isPaused} />
             </div>

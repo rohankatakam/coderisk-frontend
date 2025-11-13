@@ -45,7 +45,7 @@ export default function CriskInitAnimation({ isPaused }: CriskInitAnimationProps
   return (
     <div className="w-full h-full flex flex-col">
       {/* Header */}
-      <div className="mb-6">
+      <div className="mb-4">
         <h3 className="text-2xl font-bold text-[#0F172A] mb-2">
           crisk init: Build Knowledge Graph
         </h3>
@@ -59,7 +59,7 @@ export default function CriskInitAnimation({ isPaused }: CriskInitAnimationProps
               transition={{ duration: 0.3 }}
               className="text-sm font-semibold text-slate-700"
             >
-              Layer 1: Code Structure
+              1. Code Structure
             </motion.p>
           )}
           {stage === 'layer2' && (
@@ -71,7 +71,7 @@ export default function CriskInitAnimation({ isPaused }: CriskInitAnimationProps
               transition={{ duration: 0.3 }}
               className="text-sm font-semibold text-amber-700"
             >
-              Layer 2: Commit & PR History
+              2. Commit & PR History
             </motion.p>
           )}
           {(stage === 'layer3' || stage === 'complete') && (
@@ -83,14 +83,14 @@ export default function CriskInitAnimation({ isPaused }: CriskInitAnimationProps
               transition={{ duration: 0.3 }}
               className="text-sm font-semibold text-blue-700"
             >
-              Layer 3: Incident Intelligence
+              3. Incident Intelligence
             </motion.p>
           )}
         </AnimatePresence>
       </div>
 
       {/* Graph Visualization Container */}
-      <div className="flex-1 relative bg-white rounded-lg p-4 overflow-hidden min-h-[600px]">
+      <div className="flex-1 relative overflow-hidden">
         <svg
           viewBox="0 0 500 600"
           className="w-full h-full"
