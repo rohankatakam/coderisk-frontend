@@ -12,7 +12,7 @@ export default function IncidentTimelineAnimation() {
 
   // Terminal lines for the investigation phase
   const terminalLines = [
-    { text: 'crisk check components/PaymentProcessor.tsx', delay: 0, type: 'command' as const },
+    { text: 'crisk check', delay: 0, type: 'command' as const },
     { text: '', delay: 300, type: 'output' as const },
     { text: 'Analyzing your changes...', delay: 400, type: 'output' as const },
     { text: '', delay: 200, type: 'output' as const },
@@ -21,7 +21,6 @@ export default function IncidentTimelineAnimation() {
     { text: 'Found 3 past incidents in this file:', delay: 400, type: 'output' as const },
     { text: '  • Issue #847: "Payment processor crashes on null user"', delay: 500, type: 'highlight' as const },
     { text: '  • Issue #923: "Double charging customers"', delay: 400, type: 'output' as const },
-    { text: '  • Issue #1049: "Refunds failing silently"', delay: 400, type: 'output' as const },
     { text: '', delay: 200, type: 'output' as const },
     { text: 'Code Ownership:', delay: 400, type: 'output' as const },
     { text: '  • Original author: @sarah (inactive, last commit 8 months ago)', delay: 500, type: 'warning' as const },
