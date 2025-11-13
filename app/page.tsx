@@ -2,6 +2,7 @@
 
 import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import IncidentTimelineAnimation from '@/components/IncidentTimelineAnimation'
+import MobileHeroSlides from '@/components/MobileHeroSlides'
 import FeaturesSection from '@/components/FeaturesSection'
 import ArchitectureDiagram from '@/components/ArchitectureDiagram'
 
@@ -71,9 +72,9 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Mobile Animation - After Hero Content */}
+        {/* Mobile Slides - After Hero Content */}
         <div className="lg:hidden mt-12">
-          <IncidentTimelineAnimation />
+          <MobileHeroSlides />
         </div>
 
         {/* Social Proof Section */}
