@@ -60,7 +60,7 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
               transition={{ duration: 0.3 }}
               className="text-sm font-semibold text-slate-700"
             >
-              1. Detect Changes
+              1. Find Files in Graph
             </motion.p>
           )}
           {stage === 'agentic' && (
@@ -91,7 +91,7 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
       </div>
 
       {/* Animation Container */}
-      <div className="flex-1 relative bg-white rounded-lg p-4 flex flex-col justify-center min-h-[600px]">
+      <div className="flex-1 relative bg-white rounded-lg p-4 overflow-hidden min-h-[600px]">
 
         <AnimatePresence mode="wait">
           {/* Stage 1: Detect Changes & Find in Graph */}
@@ -104,12 +104,6 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
               transition={{ duration: 0.5 }}
               className="space-y-4"
             >
-              <div className="flex items-center justify-end mb-3">
-                <span className="px-2 py-1 bg-green-500 text-white text-xs font-bold rounded">
-                  &lt;100ms
-                </span>
-              </div>
-
               {/* Terminal Command */}
               <div className="bg-[#1e1e1e] rounded-md p-3 border border-slate-700">
                 <motion.div
@@ -235,12 +229,6 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
               transition={{ duration: 0.5 }}
               className="space-y-4"
             >
-              <div className="flex items-center justify-end mb-6">
-                <div className="px-3 py-1 bg-orange-100 border border-orange-300 text-orange-700 text-xs font-bold rounded">
-                  LLM Agent
-                </div>
-              </div>
-
               {/* SVG for Agent with Radiating Arrows */}
               <div className="relative flex items-center justify-center" style={{ minHeight: '500px' }}>
                 <svg viewBox="0 0 400 350" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
@@ -430,17 +418,6 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
               transition={{ duration: 0.5 }}
               className="space-y-4"
             >
-              <div className="flex items-center justify-end mb-4">
-                <motion.span
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.3, type: "spring" }}
-                  className="px-2 py-1 bg-green-500 text-white text-xs font-bold rounded"
-                >
-                  ✓ Complete in &lt;10s
-                </motion.span>
-              </div>
-
               {/* Terminal-style Output */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
