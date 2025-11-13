@@ -4,6 +4,7 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import TerminalDemo from '@/components/TerminalDemo'
 import IncidentTimelineAnimation from '@/components/IncidentTimelineAnimation'
 import FeaturesSection from '@/components/FeaturesSection'
+import ArchitectureDiagram from '@/components/ArchitectureDiagram'
 
 export default function Home() {
   return (
@@ -153,7 +154,7 @@ export default function Home() {
               Features
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              CodeRisk gives you the context and confidence to ship fearlessly—every single time.
+              Gives you the context and confidence to ship fearlessly—every single time.
             </p>
           </div>
 
@@ -169,43 +170,15 @@ export default function Home() {
                 How It Works
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Simple, fast, and built for developers
+                AI-powered risk detection in under 10 seconds
               </p>
             </div>
 
-            <div className="max-w-5xl mx-auto">
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-500 text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg mb-4">
-                    1
-                  </div>
-                  <h3 className="text-lg font-bold mb-2">Learns From Your Past</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Connects past incidents to the code that caused them
-                  </p>
-                </div>
-
-                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-500 text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg mb-4">
-                    2
-                  </div>
-                  <h3 className="text-lg font-bold mb-2">Check Your Changes</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Get instant warnings and context in under 10 seconds
-                  </p>
-                </div>
-
-                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-orange-600 to-red-500 text-white rounded-xl flex items-center justify-center font-bold text-xl shadow-lg mb-4">
-                    3
-                  </div>
-                  <h3 className="text-lg font-bold mb-2">Ship With Confidence</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Fix issues before review, cover blind spots, ship fearlessly
-                  </p>
-                </div>
-              </div>
+            {/* Architecture Diagram */}
+            <div className="max-w-7xl mx-auto mb-16">
+              <ArchitectureDiagram />
             </div>
+
           </div>
         </div>
 

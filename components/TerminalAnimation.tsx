@@ -78,7 +78,7 @@ export default function TerminalAnimation({ lines, onComplete }: TerminalAnimati
       </div>
 
       {/* Terminal Content */}
-      <div className="p-4 min-h-[300px] max-h-[400px] overflow-auto">
+      <div className="p-4 min-h-[450px] max-h-[500px] overflow-auto">
         <AnimatePresence>
           {lines.slice(0, visibleLines).map((line, index) => (
             <motion.div

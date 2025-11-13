@@ -1,0 +1,151 @@
+<svg width="1200" height="650" viewBox="0 0 1200 650" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="650" fill="#FFFFFF"/>
+
+  <!-- Stage 1: Ingestion (crisk init) -->
+  <g id="stage1">
+    <!-- Container -->
+    <rect x="50" y="50" width="520" height="550" rx="16" fill="#F0FDF4" stroke="#22C55E" stroke-width="3"/>
+
+    <!-- Title -->
+    <text x="310" y="95" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#15803D" text-anchor="middle">
+      crisk init: Build Knowledge Graph
+    </text>
+
+    <!-- Layer 1: Code Structure -->
+    <rect x="70" y="120" width="480" height="110" rx="10" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2"/>
+    <text x="310" y="150" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#1E40AF" text-anchor="middle">
+      Layer 1: Code Structure
+    </text>
+    <text x="85" y="175" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#475569">
+      TreeSitter parses every file, extracts dependencies
+    </text>
+    <text x="85" y="200" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#475569">
+      Creates File nodes with metadata (path, LOC, language)
+    </text>
+
+    <!-- Layer 2: History -->
+    <rect x="70" y="250" width="480" height="130" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+    <text x="310" y="280" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#92400E" text-anchor="middle">
+      Layer 2: Commit & PR History
+    </text>
+    <text x="85" y="305" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#475569">
+      GitHub API → PostgreSQL → Neo4j
+    </text>
+    <text x="85" y="330" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#475569">
+      Creates Commit, Developer, PR nodes
+    </text>
+    <text x="85" y="355" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#475569">
+      Links: AUTHORED, MODIFIED, MERGED_AS
+    </text>
+
+    <!-- Layer 3: LLM Magic - HIGHLIGHTED -->
+    <rect x="70" y="400" width="480" height="180" rx="10" fill="#FEE2E2" stroke="#EF4444" stroke-width="4" stroke-dasharray="10,5"/>
+    <text x="310" y="430" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#991B1B" text-anchor="middle">
+      Layer 3: Incident Intelligence 🧠
+    </text>
+    <rect x="85" y="445" width="450" height="120" rx="8" fill="#FFFFFF" stroke="#F97316" stroke-width="2"/>
+    <text x="310" y="470" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#EA580C" text-anchor="middle">
+      ⚡ THE SPECIAL SAUCE ⚡
+    </text>
+    <text x="100" y="495" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#475569">
+      LLM analyzes commit messages, PRs, issues
+    </text>
+    <text x="100" y="520" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#475569">
+      Detects references: "fixes #123", "closes #456"
+    </text>
+    <text x="100" y="545" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="#DC2626">
+      Connects incidents → commits → files automatically
+    </text>
+  </g>
+
+  <!-- Neo4j Badge -->
+  <g id="neo4j-badge">
+    <rect x="390" y="595" width="160" height="45" rx="8" fill="#008CC1" opacity="0.1"/>
+    <text x="470" y="620" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="#008CC1" text-anchor="middle">
+      Powered by Neo4j
+    </text>
+    <text x="470" y="637" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#475569" text-anchor="middle">
+      Graph Database
+    </text>
+  </g>
+
+  <!-- Arrow between stages -->
+  <defs>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto">
+      <polygon points="0 0, 12 6, 0 12" fill="#94A3B8"/>
+    </marker>
+  </defs>
+  <path d="M 570 300 L 630 300" stroke="#94A3B8" stroke-width="3" marker-end="url(#arrowhead)"/>
+
+  <!-- Stage 2: Analysis (crisk check) -->
+  <g id="stage2">
+    <!-- Container -->
+    <rect x="630" y="50" width="520" height="550" rx="16" fill="#FEF3C7" stroke="#F59E0B" stroke-width="3"/>
+
+    <!-- Title -->
+    <text x="890" y="95" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#92400E" text-anchor="middle">
+      crisk check: Real-Time Analysis
+    </text>
+
+    <!-- Step 1: Detect Changes -->
+    <rect x="650" y="120" width="480" height="85" rx="10" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
+    <text x="890" y="150" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600" fill="#1E40AF" text-anchor="middle">
+      1. Detect Changes
+    </text>
+    <text x="665" y="175" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#475569">
+      git diff → extract changed files + patches
+    </text>
+    <text x="1020" y="191" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600" fill="#059669">
+      &lt;100ms
+    </text>
+
+    <!-- Step 2: Query Graph -->
+    <rect x="650" y="225" width="480" height="85" rx="10" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2"/>
+    <text x="890" y="255" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600" fill="#6B21A8" text-anchor="middle">
+      2. Query Graph
+    </text>
+    <text x="665" y="280" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#475569">
+      Neo4j queries: ownership, co-change, incidents
+    </text>
+    <text x="1020" y="296" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600" fill="#059669">
+      &lt;200ms
+    </text>
+
+    <!-- Step 3: Agent Investigation - HIGHLIGHTED -->
+    <rect x="650" y="330" width="480" height="140" rx="10" fill="#FEE2E2" stroke="#EF4444" stroke-width="4" stroke-dasharray="10,5"/>
+    <text x="890" y="360" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#991B1B" text-anchor="middle">
+      3. 🤖 Agentic Search
+    </text>
+    <rect x="665" y="375" width="450" height="80" rx="8" fill="#FFFFFF" stroke="#F97316" stroke-width="2"/>
+    <text x="890" y="400" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#475569" text-anchor="middle">
+      LLM agent explores graph with tools:
+    </text>
+    <text x="680" y="422" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#475569">
+      • query_incident_history • query_ownership
+    </text>
+    <text x="680" y="440" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#475569">
+      • query_cochange_partners • query_blast_radius
+    </text>
+
+    <!-- Step 4: Risk Report -->
+    <rect x="650" y="490" width="480" height="90" rx="10" fill="#DCFCE7" stroke="#22C55E" stroke-width="2"/>
+    <text x="890" y="520" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#15803D" text-anchor="middle">
+      4. Risk Report
+    </text>
+    <text x="665" y="545" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#475569">
+      Risk level (LOW/MED/HIGH) + confidence + reasoning
+    </text>
+    <text x="890" y="565" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="700" fill="#15803D" text-anchor="middle">
+      Complete analysis in &lt;10 seconds
+    </text>
+  </g>
+
+  <!-- Bottom Timeline Labels -->
+  <text x="310" y="625" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#475569" text-anchor="middle">
+    One-Time or Periodic
+  </text>
+  <text x="890" y="625" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#475569" text-anchor="middle">
+    Every Code Change
+  </text>
+</svg>
