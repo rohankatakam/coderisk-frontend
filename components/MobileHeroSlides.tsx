@@ -70,7 +70,7 @@ export default function MobileHeroSlides() {
       </button>
 
       {/* Fixed height container */}
-      <div className="min-h-[420px] flex items-start">
+      <div className="min-h-[300px] flex items-center">
         <AnimatePresence mode="wait">
         {/* Stage 1: The Setup */}
         {stage === 'setup' && (
