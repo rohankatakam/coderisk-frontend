@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white border-b border-gray-200 z-50 backdrop-blur-sm bg-white/90">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <nav className="fixed top-0 w-full bg-white z-50 backdrop-blur-sm bg-white/90">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">CR</span>
@@ -38,13 +38,13 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <main className="max-w-7xl mx-auto px-6 pt-32 pb-16">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <main className="max-w-7xl mx-auto px-6 pt-28 pb-12">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
           {/* Left Side - Content */}
-          <div className="space-y-8">
+          <div className="space-y-10">
             {/* Main Headline */}
-            <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
+            <div className="space-y-5">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
                 Stop Breaking Production
               </h1>
 
@@ -55,16 +55,16 @@ export default function Home() {
             </div>
 
             {/* Value Proposition */}
-            <p className="text-lg text-gray-700 leading-relaxed max-w-xl">
+            <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
               Know if your code will cause a production incident—before code review. CodeRisk analyzes your repository's history to warn you about risky changes.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex gap-4 items-center">
-              <a href="#" className="inline-flex items-center justify-center bg-black text-white px-8 py-4 rounded-lg text-base font-semibold hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl">
+            <div className="flex gap-4 items-center pt-2">
+              <a href="#" className="inline-flex items-center justify-center bg-black text-white px-7 py-3.5 rounded-lg text-base font-medium hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl">
                 Book a Demo
               </a>
-              <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-base font-semibold hover:border-black hover:text-black transition-all">
+              <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border-2 border-gray-300 text-gray-700 px-7 py-3.5 rounded-lg text-base font-medium hover:border-black hover:text-black transition-all">
                 Read Our Thesis
               </a>
             </div>
@@ -77,35 +77,83 @@ export default function Home() {
         </div>
 
         {/* Social Proof Section */}
-        <div className="pt-32 pb-16">
-          <div className="text-center space-y-8">
-            <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
+        <div className="pt-24 pb-20">
+          <div className="text-center space-y-10">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
               Problem Validated With Engineers At
             </p>
-            <div className="flex flex-wrap justify-center items-center gap-12 opacity-60">
-              <div className="h-12 w-32 bg-gray-200 rounded flex items-center justify-center">
-                <span className="text-gray-400 text-xs font-medium">Microsoft</span>
-              </div>
-              <div className="h-12 w-32 bg-gray-200 rounded flex items-center justify-center">
-                <span className="text-gray-400 text-xs font-medium">Amazon</span>
-              </div>
-              <div className="h-12 w-32 bg-gray-200 rounded flex items-center justify-center">
-                <span className="text-gray-400 text-xs font-medium">Workday</span>
-              </div>
-              <div className="h-12 w-32 bg-gray-200 rounded flex items-center justify-center">
-                <span className="text-gray-400 text-xs font-medium">Oracle</span>
-              </div>
+            <div className="flex flex-wrap justify-center items-center gap-16 opacity-50">
+              <a
+                href="https://www.microsoft.com/en-us/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-100 transition-opacity"
+              >
+                <img
+                  src="https://mailmeteor.com/logos/assets/PNG/Microsoft_Logo_512px.png"
+                  alt="Microsoft"
+                  className="h-7 w-auto object-contain grayscale"
+                />
+              </a>
+              <a
+                href="https://www.amazon.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-100 transition-opacity"
+              >
+                <img
+                  src="https://logoeps.com/wp-content/uploads/2025/02/amazon_icon_logo-logo_brandlogos.net_fgndw.png"
+                  alt="Amazon"
+                  className="h-7 w-auto object-contain grayscale"
+                />
+              </a>
+              <a
+                href="https://www.oracle.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-100 transition-opacity"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Oracle_Corporation_logo.svg/2560px-Oracle_Corporation_logo.svg.png"
+                  alt="Oracle"
+                  className="h-7 w-auto object-contain grayscale"
+                />
+              </a>
+              <a
+                href="https://www.commure.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-100 transition-opacity"
+              >
+                <img
+                  src="https://cdn.prod.website-files.com/66cdf84d5ef945a2f765fc6b/66faf09676a60c90a759820c_64948c6d7e083bfdbd5cde4c_commure-logo.png"
+                  alt="Commure"
+                  className="h-7 w-auto object-contain grayscale"
+                />
+              </a>
+              <a
+                href="https://www.workday.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-100 transition-opacity"
+              >
+                <img
+                  src="https://workday.wfu.edu/files/2020/02/workday_logo_herobutton.png"
+                  alt="Workday"
+                  className="h-7 w-auto object-contain grayscale"
+                />
+              </a>
             </div>
           </div>
         </div>
 
         {/* Problem Section */}
-        <div className="pt-24 space-y-12 border-t border-gray-200">
-          <div className="text-center space-y-4">
+        <div className="pt-24 space-y-14">
+          <div className="text-center space-y-5">
             <h2 className="text-4xl md:text-5xl font-bold">
               The Problem
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Your team ships fast. But production incidents keep happening. The same files break. The same patterns repeat.
             </p>
           </div>
