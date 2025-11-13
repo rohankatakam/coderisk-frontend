@@ -8,7 +8,7 @@ export default function AnimatedHowItWorks() {
   const [isPaused, setIsPaused] = useState(false)
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-20">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -46,13 +46,6 @@ export default function AnimatedHowItWorks() {
               <CriskCheckAnimation isPaused={isPaused} />
             </div>
           </div>
-        </div>
-
-        {/* Bottom CTA or Additional Info */}
-        <div className="text-center mt-12">
-          <p className="text-sm text-[#94A3B8]">
-            Complete risk analysis in under 10 seconds • Powered by advanced graph analysis and LLM intelligence
-          </p>
         </div>
       </div>
     </section>
