@@ -5,7 +5,8 @@ import CriskInitAnimation from './CriskInitAnimation'
 import CriskCheckAnimation from './CriskCheckAnimation'
 
 export default function AnimatedHowItWorks() {
-  const [isPaused, setIsPaused] = useState(false)
+  const [isPausedInit, setIsPausedInit] = useState(false)
+  const [isPausedCheck, setIsPausedCheck] = useState(false)
 
   return (
     <section className="py-20">
@@ -20,30 +21,19 @@ export default function AnimatedHowItWorks() {
           </p>
         </div>
 
-        {/* Play/Pause Controls */}
-        <div className="flex justify-center mb-8">
-          <button
-            onClick={() => setIsPaused(!isPaused)}
-            className="flex items-center gap-2 px-6 py-3 bg-[#F97316] hover:bg-[#EA580C] text-white font-semibold rounded-lg shadow-md transition-all duration-200 hover:shadow-lg transform hover:scale-105"
-          >
-            <span className="text-xl">{isPaused ? '▶️' : '⏸️'}</span>
-            <span>{isPaused ? 'Play' : 'Pause'}</span>
-          </button>
-        </div>
-
         {/* Animations Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
           {/* crisk init Animation */}
           <div className="flex items-start">
             <div className="w-full h-full">
-              <CriskInitAnimation isPaused={isPaused} />
+              <CriskInitAnimation isPaused={isPausedInit} onTogglePause={() => setIsPausedInit(!isPausedInit)} />
             </div>
           </div>
 
           {/* crisk check Animation */}
           <div className="flex items-start">
             <div className="w-full h-full">
-              <CriskCheckAnimation isPaused={isPaused} />
+              <CriskCheckAnimation isPaused={isPausedCheck} onTogglePause={() => setIsPausedCheck(!isPausedCheck)} />
             </div>
           </div>
         </div>

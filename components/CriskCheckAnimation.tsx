@@ -7,9 +7,10 @@ type Stage = 'detect' | 'agentic' | 'report' | 'reset'
 
 interface CriskCheckAnimationProps {
   isPaused: boolean
+  onTogglePause: () => void
 }
 
-export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationProps) {
+export default function CriskCheckAnimation({ isPaused, onTogglePause }: CriskCheckAnimationProps) {
   const [stage, setStage] = useState<Stage>('detect')
 
   useEffect(() => {
@@ -47,9 +48,26 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
     <div className="w-full h-full flex flex-col">
       {/* Header */}
       <div className="mb-4">
-        <h3 className="text-2xl font-bold text-[#0F172A] mb-2">
-          crisk check: Real-Time Analysis
-        </h3>
+        <div className="flex items-center gap-3 mb-2">
+          <h3 className="text-2xl font-bold text-[#0F172A]">
+            crisk check: Real-Time Analysis
+          </h3>
+          <button
+            onClick={onTogglePause}
+            className="p-1.5 rounded bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-colors"
+            aria-label={isPaused ? 'Play' : 'Pause'}
+          >
+            {isPaused ? (
+              <svg className="w-4 h-4 text-slate-700" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M4 2l10 6-10 6V2z" />
+              </svg>
+            ) : (
+              <svg className="w-4 h-4 text-slate-700" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M2 2h4v12H2V2zm8 0h4v12h-4V2z" />
+              </svg>
+            )}
+          </button>
+        </div>
         <AnimatePresence mode="wait">
           {stage === 'detect' && (
             <motion.p
