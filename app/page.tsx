@@ -5,7 +5,7 @@ import TerminalDemo from '@/components/TerminalDemo'
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen bg-white text-[#0F172A]">
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white z-50 backdrop-blur-sm bg-white/90">
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
@@ -18,16 +18,16 @@ export default function Home() {
             </svg>
           </div>
           <div className="flex gap-6 items-center">
-            <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-700 hover:text-black transition-colors">
+            <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-700 hover:text-[#0F172A] transition-colors">
               Thesis
             </a>
-            <a href="#" className="text-sm text-gray-700 hover:text-black transition-colors flex items-center gap-1">
+            <a href="#" className="text-sm text-gray-700 hover:text-[#0F172A] transition-colors flex items-center gap-1">
               Whitepaper
               <span className="text-[10px] bg-gray-200 text-gray-600 px-1.5 py-0.5 rounded font-medium">Coming Soon</span>
             </a>
             <SignedOut>
               <SignInButton mode="modal">
-                <button className="text-sm text-gray-700 hover:text-black transition-colors">
+                <button className="text-sm text-gray-700 hover:text-[#0F172A] transition-colors">
                   Sign In
                 </button>
               </SignInButton>
@@ -325,15 +325,15 @@ export default function Home() {
                       <span>You control LLM costs</span>
                     </li>
                   </ul>
-                  <a href="#" className="block w-full text-center border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:border-black hover:text-black transition-all">
+                  <a href="#" className="block w-full text-center border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:border-[#0F172A] hover:text-[#0F172A] transition-all">
                     Get Started
                   </a>
                 </div>
               </div>
 
-              <div className="border-2 border-black rounded-2xl p-8 relative shadow-xl bg-white">
+              <div className="border-2 border-[#0F172A] rounded-2xl p-8 relative shadow-xl bg-white">
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-black text-white px-4 py-1 rounded-full text-sm font-semibold">
+                  <span className="bg-[#0F172A] text-white px-4 py-1 rounded-full text-sm font-semibold">
                     Most Popular
                   </span>
                 </div>
@@ -412,7 +412,7 @@ export default function Home() {
                       <span>Dedicated support</span>
                     </li>
                   </ul>
-                  <a href="#" className="block w-full text-center border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:border-black hover:text-black transition-all">
+                  <a href="#" className="block w-full text-center border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:border-[#0F172A] hover:text-[#0F172A] transition-all">
                     Contact Sales
                   </a>
                 </div>

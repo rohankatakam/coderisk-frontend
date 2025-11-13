@@ -89,7 +89,7 @@ export default function FeatureCarousel({ onSlideChange }: FeatureCarouselProps)
             }}
             className={`h-2 rounded-full transition-all ${
               index === activeSlide
-                ? 'bg-black w-8'
+                ? 'bg-[#0F172A] w-8'
                 : 'bg-gray-300 hover:bg-gray-400 w-2'
             }`}
             aria-label={`Go to slide ${index + 1}`}
