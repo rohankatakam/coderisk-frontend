@@ -9,11 +9,13 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white z-50 backdrop-blur-sm bg-white/90">
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">CR</span>
-            </div>
-            <span className="font-bold text-xl">CodeRisk</span>
+          <div className="flex items-center gap-3">
+            <svg width="120" height="36" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-9 w-auto">
+              <text x="10" y="42" fontFamily="'Inter', -apple-system, sans-serif" fontSize="32" fontWeight="700" fill="#0F172A" letterSpacing="-0.03em">
+                coderisk
+              </text>
+              <circle cx="95" cy="17" r="4" fill="#F97316"/>
+            </svg>
           </div>
           <div className="flex gap-6 items-center">
             <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-700 hover:text-black transition-colors">
@@ -61,11 +63,11 @@ export default function Home() {
 
             {/* CTA Buttons */}
             <div className="flex gap-4 items-center pt-2">
-              <a href="#" className="inline-flex items-center justify-center bg-black text-white px-7 py-3.5 rounded-lg text-base font-medium hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl">
-                Book a Demo
+              <a href="#" className="inline-flex items-center justify-center bg-[#F97316] text-white px-7 py-3.5 rounded-lg text-base font-bold hover:bg-[#EA580C] transition-all shadow-lg hover:shadow-xl lowercase">
+                book a demo
               </a>
-              <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border-2 border-gray-300 text-gray-700 px-7 py-3.5 rounded-lg text-base font-medium hover:border-black hover:text-black transition-all">
-                Read Our Thesis
+              <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border-2 border-[#0F172A] text-[#0F172A] px-7 py-3.5 rounded-lg text-base font-bold hover:bg-[#0F172A] hover:text-white transition-all lowercase">
+                read our thesis
               </a>
             </div>
           </div>
@@ -369,8 +371,8 @@ export default function Home() {
                       <span>Priority support</span>
                     </li>
                   </ul>
-                  <a href="#" className="block w-full text-center bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all shadow-lg">
-                    Book a Demo
+                  <a href="#" className="block w-full text-center bg-[#F97316] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#EA580C] transition-all shadow-lg lowercase">
+                    book a demo
                   </a>
                 </div>
               </div>
@@ -429,11 +431,11 @@ export default function Home() {
               Join teams preventing regressions before code review
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <a href="#" className="inline-flex items-center justify-center bg-black text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl">
-                Book a Demo
+              <a href="#" className="inline-flex items-center justify-center bg-[#F97316] text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-[#EA580C] transition-all shadow-lg hover:shadow-xl lowercase">
+                book a demo
               </a>
-              <a href="mailto:rohan@coderisk.dev" className="inline-flex items-center justify-center border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-black hover:text-black transition-all">
-                Contact Us
+              <a href="mailto:rohan@coderisk.dev" className="inline-flex items-center justify-center border-2 border-[#0F172A] text-[#0F172A] px-8 py-4 rounded-lg text-lg font-bold hover:bg-[#0F172A] hover:text-white transition-all lowercase">
+                contact us
               </a>
             </div>
           </div>

@@ -1,10 +1,28 @@
 @import "tailwindcss";
 
 :root {
+  /* CodeRisk Option 2: Bold Lowercase - Color System */
   --background: #ffffff;
-  --foreground: #171717;
-  --brand-primary: #2563eb;
-  --brand-secondary: #06b6d4;
+  --foreground: #0F172A;
+
+  /* Brand Colors */
+  --brand-primary: #F97316; /* Orange */
+  --brand-secondary: #0F172A; /* Deep Slate */
+  --brand-hover: #EA580C; /* Darker Orange */
+
+  /* Text Colors */
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --text-inverse: #F8FAFC;
+
+  /* UI Colors */
+  --border: #E2E8F0;
+
+  /* Risk Levels */
+  --risk-low: #22C55E;
+  --risk-medium: #F59E0B;
+  --risk-high: #EF4444;
 }
 
 @theme inline {
@@ -16,17 +34,22 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0F172A;
+    --foreground: #F8FAFC;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 /* Smooth scrolling */
