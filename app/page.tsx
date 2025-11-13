@@ -12,9 +12,9 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <svg width="120" height="36" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-9 w-auto">
               <text x="10" y="42" fontFamily="'Inter', -apple-system, sans-serif" fontSize="32" fontWeight="700" fill="#0F172A" letterSpacing="-0.03em">
-                coderisk
+                coder<tspan>ı</tspan>sk
               </text>
-              <circle cx="95" cy="17" r="4" fill="#F97316"/>
+              <circle cx="91.5" cy="19" r="4.5" fill="#F97316"/>
             </svg>
           </div>
           <div className="flex gap-6 items-center">
