@@ -266,13 +266,35 @@ Be concise and specific. Don't be overly formal.`
 
 export async function POST(request: NextRequest) {
   try {
-    // Verify authentication
-    const authHeader = request.headers.get('Authorization')
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    // Verify authentication - try multiple header variations
+    // Vercel/Next.js normalizes headers to lowercase
+    const authHeader = request.headers.get('authorization') // lowercase!
+      || request.headers.get('Authorization')
+      || request.headers.get('x-auth-token')
+
+    // Log headers for debugging
+    console.log('Auth header received:', authHeader ? `${authHeader.slice(0, 30)}...` : 'null')
+
+    let token: string | null = null
+
+    if (authHeader?.startsWith('Bearer ')) {
+      token = authHeader.slice(7)
+    } else if (authHeader?.startsWith('bearer ')) {
+      token = authHeader.slice(7) // lowercase bearer
+    } else if (authHeader) {
+      token = authHeader // x-auth-token doesn't have Bearer prefix
+    }
+
+    if (!token) {
+      // Log all headers for debugging
+      const allHeaders: Record<string, string> = {}
+      request.headers.forEach((value, key) => {
+        allHeaders[key] = key.toLowerCase().includes('auth') ? `${value.slice(0, 20)}...` : value
+      })
+      console.error('No auth token found. All headers:', JSON.stringify(allHeaders))
       return NextResponse.json({ error: 'Missing authorization header' }, { status: 401 })
     }
 
-    const token = authHeader.slice(7)
     const userId = await verifyCliToken(token)
 
     if (!userId) {
