@@ -1,9 +1,9 @@
 'use client'
 
 import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
-import IncidentTimelineAnimation from '@/components/IncidentTimelineAnimation'
-import MobileHeroSlides from '@/components/MobileHeroSlides'
-import FeaturesSection from '@/components/FeaturesSection'
+import SemanticLedgerDiagram from '@/components/SemanticLedgerDiagram'
+import ThreeHorizonsSection from '@/components/ThreeHorizonsSection'
+import WhyNowSection from '@/components/WhyNowSection'
 import AnimatedHowItWorks from '@/components/AnimatedHowItWorks'
 
 export default function Home() {
@@ -40,24 +40,23 @@ export default function Home() {
 
       {/* Hero Section */}
       <main className="max-w-7xl mx-auto px-6 pt-28 pb-12">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Side - Content */}
-          <div className="space-y-10">
+          <div className="space-y-8">
             {/* Main Headline */}
-            <div className="space-y-5">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
-                Stop Breaking Production
+            <div className="space-y-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
+                The Operating System for Autonomous Software Engineering
               </h1>
 
               {/* Subheadline */}
-              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed">
-                Know if your code will cause an incident—in under 10 seconds
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+                Git knows <em className="text-gray-800 font-semibold">what</em> changed.
+                CodeRisk knows <em className="text-gray-800 font-semibold">what it means</em>.
               </p>
-            </div>
-
-            {/* Mobile Animation - Between subtitle and CTA */}
-            <div className="lg:hidden">
-              <MobileHeroSlides />
+              <p className="text-base md:text-lg text-gray-500 leading-relaxed">
+                The intelligent governance layer between infinite AI velocity and human reality.
+              </p>
             </div>
 
             {/* CTA Buttons */}
@@ -71,10 +70,15 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Side - Interactive Animation (Desktop) */}
+          {/* Right Side - Semantic Ledger Diagram */}
           <div className="lg:block hidden">
-            <IncidentTimelineAnimation />
+            <SemanticLedgerDiagram />
           </div>
+        </div>
+
+        {/* Mobile Semantic Ledger - Below CTA on mobile */}
+        <div className="lg:hidden mt-12">
+          <SemanticLedgerDiagram />
         </div>
 
         {/* Social Proof Section */}
@@ -148,20 +152,23 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Features Section */}
-        <div className="pt-24 space-y-14">
+        {/* Three Horizons Section */}
+        <div className="pt-32 space-y-14">
           <div className="text-center space-y-5">
             <h2 className="text-4xl md:text-5xl font-bold">
-              Features
+              The Three Horizons
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Gives you the context and confidence to ship fearlessly—every single time.
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              From Developer Safety Net to Enterprise Brain: The inevitable path to becoming the Universal Cortex of software development.
             </p>
           </div>
 
-          {/* Features with Scroll-Aware Terminal */}
-          <FeaturesSection />
+          {/* Three Horizons Cards */}
+          <ThreeHorizonsSection />
         </div>
+
+        {/* Why Now Section */}
+        <WhyNowSection />
 
         {/* How It Works */}
         <AnimatedHowItWorks />
@@ -182,6 +189,7 @@ export default function Home() {
                 <div className="space-y-6">
                   <div>
                     <h3 className="text-2xl font-bold mb-2">Individual</h3>
+                    <p className="text-sm text-gray-600 mb-3">Horizon 1: Safety Net</p>
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl font-bold">Free</span>
                     </div>
@@ -227,6 +235,7 @@ export default function Home() {
                 <div className="space-y-6">
                   <div>
                     <h3 className="text-2xl font-bold mb-2">Teams</h3>
+                    <p className="text-sm text-gray-600 mb-3">Horizon 1-2: Safety + Governance</p>
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl font-bold">$500</span>
                       <span className="text-xl text-gray-600">/mo</span>
@@ -249,7 +258,7 @@ export default function Home() {
                       <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span>Shared key management</span>
+                      <span>CI/CD integration for agent governance</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -268,6 +277,7 @@ export default function Home() {
                 <div className="space-y-6">
                   <div>
                     <h3 className="text-2xl font-bold mb-2">Enterprise</h3>
+                    <p className="text-sm text-gray-600 mb-3">Horizon 3: Semantic Memory</p>
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl font-bold">$2,000</span>
                       <span className="text-xl text-gray-600">/mo</span>
@@ -290,16 +300,16 @@ export default function Home() {
                       <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span>SSO & custom integrations</span>
+                      <span>Custom Semantic Ledger integration</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span>Dedicated support</span>
+                      <span>Dedicated support & white-glove onboarding</span>
                     </li>
                   </ul>
-                  <a href="#" className="block w-full text-center border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:border-[#0F172A] hover:text-[#0F172A] transition-all">
+                  <a href="https://calendly.com/rohankatakam" target="_blank" rel="noopener noreferrer" className="block w-full text-center border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:border-[#0F172A] hover:text-[#0F172A] transition-all">
                     Contact Sales
                   </a>
                 </div>
@@ -312,10 +322,10 @@ export default function Home() {
         <div className="pt-32 pb-24 border-t border-gray-200 mt-32">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-              Stop the Next Production Incident Before It Happens
+              Ready to Build the Future of Software Engineering?
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed">
-              Join teams preventing regressions before code review
+              Join the teams building the intelligent governance layer for autonomous code
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
               <a href="https://calendly.com/rohankatakam" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-[#F97316] text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-[#EA580C] transition-all shadow-lg hover:shadow-xl">
