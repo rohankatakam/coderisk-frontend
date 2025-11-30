@@ -228,12 +228,15 @@ The actual diff:
 ${diff.slice(0, 2000)}
 \`\`\`
 
-Write a brief, friendly Slack message (3-4 sentences) that:
-1. Mentions what files are being changed
-2. Notes which files might be impacted
-3. Asks if there are any concerns or dependencies to be aware of
+Write a brief, friendly Slack message (2-3 sentences) addressed to the primary owner (whoever owns the most impacted files). If there are other owners, mention them as CC'd.
 
-Be concise and specific. Don't be overly formal.`
+Format like: "Hey @primary_owner - I'm updating [file]. This might impact [X files you own]. CC @other_owner for [their files]. Any concerns?"
+
+Rules:
+- Be concise and specific about what's changing
+- Don't use "Hey folks" or generic greetings - address the primary owner directly
+- Don't use emojis
+- Keep it professional but friendly`
 
   const response = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
