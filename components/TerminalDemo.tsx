@@ -1,236 +1,219 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import { useEffect, useState, useRef } from 'react'
 
 export default function TerminalDemo() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isTransitioning, setIsTransitioning] = useState(false)
+  const [stage, setStage] = useState(0)
+  const contentRef = useRef<HTMLDivElement>(null)
 
-  // Scenarios for auto-rotation
-  const scenarios = [
-    // Slide 0: Links Past Incidents to Code
-    {
-      file: 'terminal',
-      output: [
-        '$ crisk check',
-        '',
-        'Analyzing changed files...',
-        '',
-        'HIGH RISK',
-        '',
-        'payments/stripe.ts',
-        '  Linked to 3 production incidents',
-        '  • #847: Payment timeout crash (Dec 2, 2024)',
-        '  • #712: Stripe API failure (Nov 18, 2024)',
-        '  • #623: Transaction rollback bug (Oct 29, 2024)',
-        '',
-        'Review linked issues before committing',
-        '',
-        'Analysis complete in 8.2s'
-      ]
-    },
-    // Slide 1: Detects Co-Change Patterns
-    {
-      file: 'terminal',
-      output: [
-        '$ crisk check',
-        '',
-        'Analyzing changed files...',
-        '',
-        'MEDIUM RISK',
-        '',
-        'auth/login.ts',
-        '  Incomplete change detected',
-        '  • session.ts changes with this file 82% of the time',
-        '  • You modified login.ts but not session.ts',
-        '',
-        'Consider updating session.ts to prevent issues',
-        '',
-        'Analysis complete in 6.7s'
-      ]
-    },
-    // Slide 2: Tracks Code Ownership
-    {
-      file: 'terminal',
-      output: [
-        '$ crisk check',
-        '',
-        'Analyzing changed files...',
-        '',
-        'MEDIUM RISK',
-        '',
-        'core/email.go',
-        '  Unknown code ownership',
-        '  • sendEmail function: written by Johnny Chen',
-        '  • Johnny left team 2 years ago',
-        '  • High complexity, zero recent changes',
-        '',
-        'Get backup review from current email system owner',
-        '',
-        'Analysis complete in 7.1s'
-      ]
-    },
-    // Slide 3: Repository-Specific Intelligence
-    {
-      file: 'terminal',
-      output: [
-        '$ crisk check',
-        '',
-        'Analyzing changed files...',
-        '',
-        'LOW RISK',
-        '',
-        'api/webhook.ts',
-        '  No incident history',
-        '  Active ownership (you: 89% of commits)',
-        '  No co-change patterns detected',
-        '',
-        'Safe to proceed with standard review',
-        '',
-        'Analyzed 10,247 commits, 156 incidents',
-        'Analysis complete in 5.3s'
-      ]
-    }
-  ]
-
-  // Auto-rotate through scenarios every 4 seconds
+  // Auto-scroll to bottom when stage changes
   useEffect(() => {
-    const timer = setInterval(() => {
-      setIsTransitioning(true)
-      setTimeout(() => {
-        setCurrentSlide((prev) => (prev + 1) % scenarios.length)
-        setIsTransitioning(false)
-      }, 200) // Quick fade transition
-    }, 4000) // Change scenario every 4 seconds
+    if (contentRef.current) {
+      contentRef.current.scrollTo({
+        top: contentRef.current.scrollHeight,
+        behavior: 'smooth'
+      })
+    }
+  }, [stage])
 
-    return () => clearInterval(timer)
-  }, [scenarios.length])
+  useEffect(() => {
+    const runAnimation = () => {
+      const timers = [
+        setTimeout(() => setStage(1), 500),
+        setTimeout(() => setStage(2), 1200),
+        setTimeout(() => setStage(3), 2000),
+        setTimeout(() => setStage(4), 2800),
+        setTimeout(() => setStage(5), 3600),
+        setTimeout(() => setStage(6), 4400),
+        setTimeout(() => setStage(7), 5000),
+        setTimeout(() => setStage(8), 5500),
+        setTimeout(() => setStage(9), 6000),
+        setTimeout(() => setStage(10), 6800),
+      ]
+      return timers
+    }
 
-  const currentScenario = scenarios[currentSlide]
+    let timers = runAnimation()
+
+    const resetTimer = setInterval(() => {
+      setStage(0)
+      timers.forEach(clearTimeout)
+      timers = runAnimation()
+    }, 12000)
+
+    return () => {
+      timers.forEach(clearTimeout)
+      clearInterval(resetTimer)
+    }
+  }, [])
 
   return (
-    <div className="relative w-full h-full">
+    <div className="w-full">
       {/* Terminal Window */}
-      <div className="bg-[#1a1a1a] rounded-lg shadow-2xl overflow-hidden border border-gray-700">
-        {/* Header */}
-        <div className="bg-[#0a0a0a] px-4 py-3 flex items-center gap-2 border-b border-gray-700">
+      <div className="bg-[#1a1a1a] rounded-lg overflow-hidden shadow-2xl border border-gray-800">
+        {/* Terminal Header */}
+        <div className="flex items-center gap-2 px-4 py-3 bg-[#2d2d2d] border-b border-gray-700">
           <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+            <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
+            <div className="w-3 h-3 rounded-full bg-[#28c840]" />
           </div>
-          <div className="ml-4 text-gray-400 text-xs font-mono">
-            terminal
-          </div>
+          <span className="ml-4 text-gray-400 text-sm font-mono">~/my-project</span>
         </div>
 
-        {/* Content */}
-        <div className={`p-6 font-mono text-sm h-[420px] transition-opacity duration-200 ${
-          isTransitioning ? 'opacity-0' : 'opacity-100'
-        }`}>
-          <div className="space-y-1">
-            {currentScenario.output.map((line, index) => {
-              // Command line
-              if (line.startsWith('$')) {
-                return (
-                  <div key={index} className="text-green-400 mb-4 font-semibold">
-                    {line}
-                  </div>
-                )
-              }
+        {/* Terminal Content - Fixed height with scroll */}
+        <div
+          ref={contentRef}
+          className="p-4 font-mono text-sm space-y-2 h-[420px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
+        >
+          {/* Command */}
+          {stage >= 1 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex items-center gap-2"
+            >
+              <span className="text-green-400">$</span>
+              <span className="text-white">crisk check --draft</span>
+            </motion.div>
+          )}
 
-              // Empty line
-              if (line === '') {
-                return <div key={index} className="h-2"></div>
-              }
+          {/* Getting staged changes */}
+          {stage >= 2 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-gray-400 mt-4"
+            >
+              Getting staged changes...
+            </motion.div>
+          )}
 
-              // Status indicators
-              if (line === 'HIGH RISK') {
-                return (
-                  <div key={index} className="text-red-400 font-bold text-lg mb-3 tracking-wide">
-                    {line}
-                  </div>
-                )
-              }
-              if (line === 'MEDIUM RISK') {
-                return (
-                  <div key={index} className="text-yellow-400 font-bold text-lg mb-3 tracking-wide">
-                    {line}
-                  </div>
-                )
-              }
-              if (line === 'LOW RISK') {
-                return (
-                  <div key={index} className="text-green-400 font-bold text-lg mb-3 tracking-wide">
-                    {line}
-                  </div>
-                )
-              }
+          {/* Staged file */}
+          {stage >= 3 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-gray-300 ml-4"
+            >
+              <span className="text-gray-500">Found 1 staged file:</span>
+              <br />
+              <span className="text-cyan-400 ml-2">* src/api/payments.py</span>
+            </motion.div>
+          )}
 
-              // File name
-              if (line.endsWith('.ts') || line.endsWith('.tsx') || line.endsWith('.js')) {
-                return (
-                  <div key={index} className="text-blue-300 font-semibold text-base mb-2">
-                    {line}
-                  </div>
-                )
-              }
+          {/* Loading codebase */}
+          {stage >= 4 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-gray-400 mt-2"
+            >
+              Loading codebase... <span className="text-gray-500">562 files indexed</span>
+            </motion.div>
+          )}
 
-              // Bullet points
-              if (line.includes('•')) {
-                return (
-                  <div key={index} className="text-gray-300 text-sm pl-2 leading-relaxed">
-                    {line}
-                  </div>
-                )
-              }
+          {/* Analyzing */}
+          {stage >= 5 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-gray-400 mt-2"
+            >
+              Analyzing semantic relationships...
+            </motion.div>
+          )}
 
-              // Analysis complete line
-              if (line.includes('Analysis complete')) {
-                return (
-                  <div key={index} className="text-gray-500 text-xs italic mt-2">
-                    {line}
-                  </div>
-                )
-              }
+          {/* Results header */}
+          {stage >= 6 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="mt-4 pt-4 border-t border-gray-700"
+            >
+              <div className="text-yellow-400 font-semibold">Your changes may impact:</div>
+            </motion.div>
+          )}
 
-              // Analyzed stats
-              if (line.includes('Analyzed')) {
-                return (
-                  <div key={index} className="text-gray-500 text-xs">
-                    {line}
-                  </div>
-                )
-              }
+          {/* Result 1 */}
+          {stage >= 7 && (
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="ml-2 mt-2"
+            >
+              <div className="text-white">
+                1. <span className="text-cyan-400">src/api/billing.py</span>
+                <span className="text-gray-500 ml-2">(relevance: 0.94)</span>
+              </div>
+              <div className="text-gray-400 ml-4">
+                Owner: <span className="text-purple-400">dave@company.com</span>
+              </div>
+            </motion.div>
+          )}
 
-              // Indented descriptive lines (start with spaces)
-              if (line.startsWith('  ') && !line.includes('•')) {
-                return (
-                  <div key={index} className="text-gray-300 text-sm pl-2">
-                    {line}
-                  </div>
-                )
-              }
+          {/* Result 2 */}
+          {stage >= 8 && (
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="ml-2 mt-2"
+            >
+              <div className="text-white">
+                2. <span className="text-cyan-400">src/models/transaction.py</span>
+                <span className="text-gray-500 ml-2">(relevance: 0.87)</span>
+              </div>
+              <div className="text-gray-400 ml-4">
+                Owner: <span className="text-purple-400">sarah@company.com</span>
+              </div>
+            </motion.div>
+          )}
 
-              // Main action lines (recommendations)
-              if (!line.startsWith(' ') && line !== '' && !line.startsWith('$') &&
-                  line !== 'HIGH RISK' && line !== 'MEDIUM RISK' && line !== 'LOW RISK' &&
-                  !line.endsWith('.ts') && !line.endsWith('.tsx') && !line.endsWith('.js')) {
-                return (
-                  <div key={index} className="text-cyan-300 text-sm font-medium mt-2">
-                    {line}
-                  </div>
-                )
-              }
+          {/* Result 3 */}
+          {stage >= 9 && (
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="ml-2 mt-2"
+            >
+              <div className="text-white">
+                3. <span className="text-cyan-400">tests/test_payments.py</span>
+                <span className="text-gray-500 ml-2">(relevance: 0.82)</span>
+              </div>
+              <div className="text-gray-400 ml-4">
+                Owner: <span className="text-purple-400">dave@company.com</span>
+              </div>
+            </motion.div>
+          )}
 
-              // Default
-              return (
-                <div key={index} className="text-gray-400 text-sm">
-                  {line}
-                </div>
-              )
-            })}
-          </div>
+          {/* Draft message */}
+          {stage >= 10 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="mt-4 pt-4 border-t border-gray-700"
+            >
+              <div className="text-green-400 font-semibold mb-2">DRAFT MESSAGE:</div>
+              <div className="bg-[#2d2d2d] rounded p-3 text-gray-300 text-xs leading-relaxed">
+                Hey @dave - I&apos;m updating <span className="text-cyan-400">`payments.py`</span>.
+                This might impact 2 file(s) you own (billing.py, test_payments.py).
+                CC @sarah for transaction.py. Any concerns?
+              </div>
+              <div className="mt-3 text-gray-500 text-xs">
+                Recipients: dave@company.com, sarah@company.com
+              </div>
+            </motion.div>
+          )}
+
+          {/* Cursor */}
+          {stage < 10 && (
+            <motion.span
+              animate={{ opacity: [1, 0] }}
+              transition={{ duration: 0.8, repeat: Infinity }}
+              className="inline-block w-2 h-4 bg-green-400 ml-1"
+            />
+          )}
         </div>
       </div>
     </div>

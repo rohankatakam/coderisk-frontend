@@ -1,19 +1,17 @@
 'use client'
 
 import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
-import SemanticLedgerDiagram from '@/components/SemanticLedgerDiagram'
-import ThreeHorizonsSection from '@/components/ThreeHorizonsSection'
-import WhyNowSection from '@/components/WhyNowSection'
+import TerminalDemo from '@/components/TerminalDemo'
 import AnimatedHowItWorks from '@/components/AnimatedHowItWorks'
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-white text-[#0F172A]">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white z-50 backdrop-blur-sm bg-white/90">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <nav className="fixed top-0 w-full bg-white z-50 border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <svg width="120" height="36" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-9 w-auto">
+            <svg width="120" height="36" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-8 w-auto">
               <text x="10" y="42" fontFamily="'Inter', -apple-system, sans-serif" fontSize="32" fontWeight="700" fill="#0F172A" letterSpacing="-0.03em">
                 coder<tspan>ı</tspan>sk
               </text>
@@ -21,12 +19,12 @@ export default function Home() {
             </svg>
           </div>
           <div className="flex gap-6 items-center">
-            <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-700 hover:text-[#0F172A] transition-colors">
+            <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-[#0F172A] transition-colors">
               Thesis
             </a>
             <SignedOut>
               <SignInButton mode="modal">
-                <button className="text-sm text-gray-700 hover:text-[#0F172A] transition-colors">
+                <button className="text-sm text-gray-600 hover:text-[#0F172A] transition-colors">
                   Sign In
                 </button>
               </SignInButton>
@@ -39,312 +37,102 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <main className="max-w-7xl mx-auto px-6 pt-28 pb-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <main className="max-w-6xl mx-auto px-6 pt-28 pb-16">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left Side - Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 pt-8">
             {/* Main Headline */}
             <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
-                The Operating System for Autonomous Software Engineering
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
+                Know who to ask before you push.
               </h1>
 
-              {/* Subheadline */}
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
-                Git knows <em className="text-gray-800 font-semibold">what</em> changed.
-                CodeRisk knows <em className="text-gray-800 font-semibold">what it means</em>.
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Git knows what changed. We find what it impacts and who owns it.
               </p>
-              <p className="text-base md:text-lg text-gray-500 leading-relaxed">
-                The intelligent governance layer between infinite AI velocity and human reality.
+            </div>
+
+            {/* Install Command */}
+            <div className="space-y-3">
+              <div className="bg-[#1a1a1a] rounded-lg p-4 font-mono text-sm inline-block">
+                <span className="text-gray-500">$</span>
+                <span className="text-white ml-2">pip install crisk</span>
+                <button
+                  onClick={() => navigator.clipboard.writeText('pip install crisk')}
+                  className="ml-4 text-gray-500 hover:text-white transition-colors"
+                  title="Copy to clipboard"
+                >
+                  <svg className="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                </button>
+              </div>
+              <p className="text-sm text-gray-500">
+                Or: <code className="bg-gray-100 px-2 py-1 rounded text-xs">uv pip install crisk</code>
               </p>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex gap-4 items-center pt-2">
-              <a href="https://calendly.com/rohankatakam" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-[#F97316] text-white px-7 py-3.5 rounded-lg text-base font-bold hover:bg-[#EA580C] transition-all shadow-lg hover:shadow-xl">
+            <div className="flex gap-4 items-center">
+              <a href="https://calendly.com/rohankatakam" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-[#0F172A] text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-[#1e293b] transition-all">
                 Book a Demo
               </a>
-              <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center border-2 border-[#0F172A] text-[#0F172A] px-7 py-3.5 rounded-lg text-base font-bold hover:bg-[#0F172A] hover:text-white transition-all">
-                Read Our Thesis
+              <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center text-[#0F172A] px-6 py-3 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-all">
+                Read Thesis
               </a>
             </div>
           </div>
 
-          {/* Right Side - Semantic Ledger Diagram */}
-          <div className="lg:block hidden">
-            <SemanticLedgerDiagram />
+          {/* Right Side - Terminal Demo */}
+          <div className="lg:block">
+            <TerminalDemo />
           </div>
         </div>
 
-        {/* Mobile Semantic Ledger - Below CTA on mobile */}
-        <div className="lg:hidden mt-12">
-          <SemanticLedgerDiagram />
-        </div>
-
-        {/* Social Proof Section */}
-        <div className="pt-24 pb-20">
-          <div className="text-center space-y-10">
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
-              Validated With Engineers At
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-16 opacity-50">
-              <a
-                href="https://www.microsoft.com/en-us/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-100 transition-opacity"
-              >
-                <img
-                  src="https://mailmeteor.com/logos/assets/PNG/Microsoft_Logo_512px.png"
-                  alt="Microsoft"
-                  className="h-7 w-auto object-contain grayscale"
-                />
-              </a>
-              <a
-                href="https://www.amazon.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-100 transition-opacity"
-              >
-                <img
-                  src="https://logoeps.com/wp-content/uploads/2025/02/amazon_icon_logo-logo_brandlogos.net_fgndw.png"
-                  alt="Amazon"
-                  className="h-7 w-auto object-contain grayscale"
-                />
-              </a>
-              <a
-                href="https://www.oracle.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-100 transition-opacity"
-              >
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Oracle_Corporation_logo.svg/2560px-Oracle_Corporation_logo.svg.png"
-                  alt="Oracle"
-                  className="h-7 w-auto object-contain grayscale"
-                />
-              </a>
-              <a
-                href="https://www.commure.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-100 transition-opacity"
-              >
-                <img
-                  src="https://cdn.prod.website-files.com/66cdf84d5ef945a2f765fc6b/66faf09676a60c90a759820c_64948c6d7e083bfdbd5cde4c_commure-logo.png"
-                  alt="Commure"
-                  className="h-7 w-auto object-contain grayscale"
-                />
-              </a>
-              <a
-                href="https://www.workday.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-100 transition-opacity"
-              >
-                <img
-                  src="https://workday.wfu.edu/files/2020/02/workday_logo_herobutton.png"
-                  alt="Workday"
-                  className="h-7 w-auto object-contain grayscale"
-                />
-              </a>
+        {/* Value Props */}
+        <div className="mt-24 pt-12 border-t border-gray-100">
+          <div className="grid grid-cols-3 gap-8 text-center">
+            <div>
+              <div className="text-3xl font-bold text-[#0F172A]">Semantic</div>
+              <div className="text-sm text-gray-500 mt-1">Finds related files by meaning, not imports</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-[#0F172A]">Ownership</div>
+              <div className="text-sm text-gray-500 mt-1">Routes to the right person via git blame</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-[#0F172A]">Draft</div>
+              <div className="text-sm text-gray-500 mt-1">Generates context-aware Slack messages</div>
             </div>
           </div>
         </div>
-
-        {/* Three Horizons Section */}
-        <div className="pt-32 space-y-14">
-          <div className="text-center space-y-5">
-            <h2 className="text-4xl md:text-5xl font-bold">
-              The Three Horizons
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              From Developer Safety Net to Enterprise Brain: The inevitable path to becoming the Universal Cortex of software development.
-            </p>
-          </div>
-
-          {/* Three Horizons Cards */}
-          <ThreeHorizonsSection />
-        </div>
-
-        {/* Why Now Section */}
-        <WhyNowSection />
 
         {/* How It Works */}
         <AnimatedHowItWorks />
 
-        {/* Pricing Section */}
-        <div className="pt-32 pb-16">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center space-y-4 mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold">
-                Simple Pricing
-              </h2>
-              <p className="text-xl text-gray-600">
-                Start free. Scale as you grow.
-              </p>
-            </div>
-            <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-              <div className="border-2 border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-all bg-white">
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">Individual</h3>
-                    <p className="text-sm text-gray-600 mb-3">Horizon 1: Safety Net</p>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-bold">Free</span>
-                    </div>
-                  </div>
-                  <ul className="space-y-3 text-base text-gray-700">
-                    <li className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>BYOK (bring your own key)</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Local-first architecture</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Open source core</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>You control LLM costs</span>
-                    </li>
-                  </ul>
-                  <a href="#" className="block w-full text-center border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:border-[#0F172A] hover:text-[#0F172A] transition-all">
-                    Get Started
-                  </a>
-                </div>
-              </div>
-
-              <div className="border-2 border-[#0F172A] rounded-2xl p-8 relative shadow-xl bg-white">
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-[#0F172A] text-white px-4 py-1 rounded-full text-sm font-semibold">
-                    Most Popular
-                  </span>
-                </div>
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">Teams</h3>
-                    <p className="text-sm text-gray-600 mb-3">Horizon 1-2: Safety + Governance</p>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-bold">$500</span>
-                      <span className="text-xl text-gray-600">/mo</span>
-                    </div>
-                  </div>
-                  <ul className="space-y-3 text-base text-gray-700">
-                    <li className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>5-50 developers</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Team analytics dashboard</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>CI/CD integration for agent governance</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Priority support</span>
-                    </li>
-                  </ul>
-                  <a href="https://calendly.com/rohankatakam" target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-[#F97316] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#EA580C] transition-all shadow-lg">
-                    Book a Demo
-                  </a>
-                </div>
-              </div>
-
-              <div className="border-2 border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-all bg-white">
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">Enterprise</h3>
-                    <p className="text-sm text-gray-600 mb-3">Horizon 3: Semantic Memory</p>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-bold">$2,000</span>
-                      <span className="text-xl text-gray-600">/mo</span>
-                    </div>
-                  </div>
-                  <ul className="space-y-3 text-base text-gray-700">
-                    <li className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>50+ developers</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>On-premises deployment</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Custom Semantic Ledger integration</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Dedicated support & white-glove onboarding</span>
-                    </li>
-                  </ul>
-                  <a href="https://calendly.com/rohankatakam" target="_blank" rel="noopener noreferrer" className="block w-full text-center border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:border-[#0F172A] hover:text-[#0F172A] transition-all">
-                    Contact Sales
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer CTA */}
-        <div className="pt-32 pb-24 border-t border-gray-200 mt-32">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-              Ready to Build the Future of Software Engineering?
-            </h2>
-            <p className="text-xl text-gray-600 leading-relaxed">
-              Join the teams building the intelligent governance layer for autonomous code
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <a href="https://calendly.com/rohankatakam" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-[#F97316] text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-[#EA580C] transition-all shadow-lg hover:shadow-xl">
-                Book a Demo
-              </a>
-              <a href="mailto:rohan@coderisk.dev" className="inline-flex items-center justify-center border-2 border-[#0F172A] text-[#0F172A] px-8 py-4 rounded-lg text-lg font-bold hover:bg-[#0F172A] hover:text-white transition-all">
-                Contact Us
-              </a>
-            </div>
+        {/* Simple CTA */}
+        <div className="mt-24 pt-16 border-t border-gray-100 text-center">
+          <h2 className="text-3xl font-bold mb-4">
+            Stop interrupting. Start shipping.
+          </h2>
+          <p className="text-gray-600 mb-8 max-w-xl mx-auto">
+            Everyone builds tools to search code. We built a tool that talks to the people who wrote it.
+          </p>
+          <div className="flex gap-4 justify-center">
+            <a href="https://calendly.com/rohankatakam" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-[#0F172A] text-white px-8 py-4 rounded-lg text-base font-semibold hover:bg-[#1e293b] transition-all">
+              Book a Demo
+            </a>
+            <a href="mailto:rohan@coderisk.dev" className="inline-flex items-center justify-center border border-gray-300 text-[#0F172A] px-8 py-4 rounded-lg text-base font-semibold hover:bg-gray-50 transition-all">
+              Contact Us
+            </a>
           </div>
         </div>
 
         {/* Footer */}
-        <footer className="border-t border-gray-200 py-12">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex justify-center items-center">
-              <div className="text-sm text-gray-500">
-                © 2025 CodeRisk. All rights reserved.
-              </div>
+        <footer className="mt-24 pt-8 border-t border-gray-100">
+          <div className="flex justify-center items-center">
+            <div className="text-sm text-gray-400">
+              © 2025 CodeRisk. All rights reserved.
             </div>
           </div>
         </footer>
