@@ -37,7 +37,7 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
   }, [stage, isPaused])
 
   const currentStep = stage === 'detect' ? 1 : stage === 'analyze' ? 2 : 3
-  const stepLabels = ['Detect Changes', 'Find Related Files', 'Identify Owners']
+  const stepLabels = ['Detect Changes', 'Measure Evidence', 'Route Review']
 
   return (
     <div className="w-full">
@@ -62,7 +62,7 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
                   className="space-y-4"
                 >
                   <div className="text-green-400 text-sm font-mono">
-                    $ crisk check --draft
+                    $ crisk check --no-ai
                   </div>
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -86,7 +86,7 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
                     transition={{ delay: 1.8 }}
                     className="text-gray-400 text-sm font-mono"
                   >
-                    Loading codebase... <span className="text-gray-500">562 files</span>
+                    Loading indexed repository evidence...
                   </motion.div>
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -94,14 +94,14 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
                     transition={{ delay: 2.4 }}
                     className="text-gray-400 text-sm font-mono"
                   >
-                    Analyzing semantic relationships...
+                    Measuring coupling, co-change, and tests...
                   </motion.div>
                 </motion.div>
               </div>
             </motion.div>
           )}
 
-          {/* Stage 2: Semantic Analysis */}
+          {/* Stage 2: Repository evidence */}
           {stage === 'analyze' && (
             <motion.div
               key="analyze"
@@ -113,7 +113,7 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
             >
               <div className="bg-gray-50 rounded-lg p-5 border border-gray-200 h-full">
                 <div className="text-center mb-4">
-                  <p className="text-sm text-gray-600 font-medium">Analyzing semantic relationships...</p>
+                  <p className="text-sm text-gray-600 font-medium">Tracing dependencies and historical co-change...</p>
                 </div>
 
                 {/* SVG-based graph for precise positioning */}
@@ -218,14 +218,14 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
                   transition={{ delay: 0.2 }}
                   className="text-yellow-400 mb-4"
                 >
-                  Your changes may impact:
+                  Risk level: HIGH
                 </motion.div>
 
                 <div className="space-y-3">
                   {[
-                    { file: 'billing.py', owner: 'dave@company.com', score: '0.94' },
-                    { file: 'transaction.py', owner: 'sarah@company.com', score: '0.87' },
-                    { file: 'test_payments.py', owner: 'dave@company.com', score: '0.82' },
+                    { file: 'billing.py', evidence: 'structural dependency' },
+                    { file: 'transaction.py', evidence: '48% co-change' },
+                    { file: 'test_payments.py', evidence: 'related test' },
                   ].map((item, i) => (
                     <motion.div
                       key={item.file}
@@ -236,10 +236,7 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
                     >
                       <span className="text-white">{i + 1}.</span>{' '}
                       <span className="text-cyan-400">{item.file}</span>
-                      <span className="text-gray-500 ml-2">({item.score})</span>
-                      <br />
-                      <span className="text-gray-500 ml-4">Owner: </span>
-                      <span className="text-purple-400">{item.owner}</span>
+                      <span className="text-gray-500 ml-2">({item.evidence})</span>
                     </motion.div>
                   ))}
                 </div>
@@ -250,9 +247,9 @@ export default function CriskCheckAnimation({ isPaused }: CriskCheckAnimationPro
                   transition={{ delay: 1.4 }}
                   className="mt-5 pt-4 border-t border-gray-700"
                 >
-                  <div className="text-green-400 text-xs mb-2">DRAFT MESSAGE:</div>
+                  <div className="text-green-400 text-xs mb-2">RECOMMENDATION:</div>
                   <div className="bg-[#2a2a2a] rounded p-3 text-gray-300 text-xs leading-relaxed">
-                    Hey @dave - I&apos;m updating payments.py. This might impact 2 file(s) you own. CC @sarah for transaction.py. Any concerns?
+                    Review coupled files and ask a historical owner before merging.
                   </div>
                 </motion.div>
               </div>

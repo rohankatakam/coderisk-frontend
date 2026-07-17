@@ -1,9 +1,5 @@
-import { SignIn } from '@clerk/nextjs'
+import { redirect } from 'next/navigation'
 
-export default function Page() {
-  return (
-    <div className="flex min-h-screen items-center justify-center">
-      <SignIn />
-    </div>
-  )
+export default function SignIn() {
+  redirect('https://github.com/rohankatakam/coderisk')
 }

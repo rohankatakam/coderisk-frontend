@@ -75,7 +75,7 @@ export default function TerminalDemo() {
               className="flex items-center gap-2"
             >
               <span className="text-green-400">$</span>
-              <span className="text-white">crisk check --draft</span>
+              <span className="text-white">crisk check --no-ai</span>
             </motion.div>
           )}
 
@@ -86,7 +86,7 @@ export default function TerminalDemo() {
               animate={{ opacity: 1 }}
               className="text-gray-400 mt-4"
             >
-              Getting staged changes...
+              Detecting changed files...
             </motion.div>
           )}
 
@@ -110,7 +110,7 @@ export default function TerminalDemo() {
               animate={{ opacity: 1 }}
               className="text-gray-400 mt-2"
             >
-              Loading codebase... <span className="text-gray-500">562 files indexed</span>
+              Loading indexed repository evidence...
             </motion.div>
           )}
 
@@ -121,7 +121,7 @@ export default function TerminalDemo() {
               animate={{ opacity: 1 }}
               className="text-gray-400 mt-2"
             >
-              Analyzing semantic relationships...
+              Measuring structural coupling, co-change, and tests...
             </motion.div>
           )}
 
@@ -132,7 +132,7 @@ export default function TerminalDemo() {
               animate={{ opacity: 1 }}
               className="mt-4 pt-4 border-t border-gray-700"
             >
-              <div className="text-yellow-400 font-semibold">Your changes may impact:</div>
+              <div className="text-yellow-400 font-semibold">🔍 CodeRisk Analysis</div>
             </motion.div>
           )}
 
@@ -144,11 +144,10 @@ export default function TerminalDemo() {
               className="ml-2 mt-2"
             >
               <div className="text-white">
-                1. <span className="text-cyan-400">src/api/billing.py</span>
-                <span className="text-gray-500 ml-2">(relevance: 0.94)</span>
+                Risk level: <span className="text-red-400">HIGH</span>
               </div>
               <div className="text-gray-400 ml-4">
-                Owner: <span className="text-purple-400">dave@company.com</span>
+                7 structurally coupled files
               </div>
             </motion.div>
           )}
@@ -161,11 +160,10 @@ export default function TerminalDemo() {
               className="ml-2 mt-2"
             >
               <div className="text-white">
-                2. <span className="text-cyan-400">src/models/transaction.py</span>
-                <span className="text-gray-500 ml-2">(relevance: 0.87)</span>
+                1. <span className="text-cyan-400">src/api/payments.py</span>
               </div>
               <div className="text-gray-400 ml-4">
-                Owner: <span className="text-purple-400">sarah@company.com</span>
+                Co-change frequency: <span className="text-purple-400">48%</span>
               </div>
             </motion.div>
           )}
@@ -178,30 +176,27 @@ export default function TerminalDemo() {
               className="ml-2 mt-2"
             >
               <div className="text-white">
-                3. <span className="text-cyan-400">tests/test_payments.py</span>
-                <span className="text-gray-500 ml-2">(relevance: 0.82)</span>
+                Test-file ratio: <span className="text-cyan-400">35%</span>
               </div>
               <div className="text-gray-400 ml-4">
-                Owner: <span className="text-purple-400">dave@company.com</span>
+                Historical owner data available via <span className="text-purple-400">crisk blame</span>
               </div>
             </motion.div>
           )}
 
-          {/* Draft message */}
+          {/* Recommendations */}
           {stage >= 10 && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="mt-4 pt-4 border-t border-gray-700"
             >
-              <div className="text-green-400 font-semibold mb-2">DRAFT MESSAGE:</div>
+              <div className="text-green-400 font-semibold mb-2">RECOMMENDATIONS:</div>
               <div className="bg-[#2d2d2d] rounded p-3 text-gray-300 text-xs leading-relaxed">
-                Hey @dave - I&apos;m updating <span className="text-cyan-400">`payments.py`</span>.
-                This might impact 2 file(s) you own (billing.py, test_payments.py).
-                CC @sarah for transaction.py. Any concerns?
+                Review historically coupled files and add coverage before merging.
               </div>
               <div className="mt-3 text-gray-500 text-xs">
-                Recipients: dave@company.com, sarah@company.com
+                Run crisk check --explain for the investigation trace
               </div>
             </motion.div>
           )}

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CodeRisk - Stop Breaking Production",
-  description: "Know if your code will cause an incident—before code review. Learns from your repository's incident history to prevent regressions. Free for individuals with BYOK.",
+  title: "CodeRisk - Evidence for Code Changes",
+  description: "Inspect code-change risk with dependency, co-change, test, ownership, and incident evidence from your repository.",
   icons: {
     icon: '/icon.svg',
   },
@@ -27,14 +26,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        {children}
+      </body>
+    </html>
   );
 }

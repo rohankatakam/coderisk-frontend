@@ -1,6 +1,5 @@
 'use client'
 
-import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import TerminalDemo from '@/components/TerminalDemo'
 import AnimatedHowItWorks from '@/components/AnimatedHowItWorks'
 
@@ -22,16 +21,9 @@ export default function Home() {
             <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-[#0F172A] transition-colors">
               Thesis
             </a>
-            <SignedOut>
-              <SignInButton mode="modal">
-                <button className="text-sm text-gray-600 hover:text-[#0F172A] transition-colors">
-                  Sign In
-                </button>
-              </SignInButton>
-            </SignedOut>
-            <SignedIn>
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
+            <a href="https://github.com/rohankatakam/coderisk" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-[#0F172A] transition-colors">
+              GitHub
+            </a>
           </div>
         </div>
       </nav>
@@ -44,11 +36,11 @@ export default function Home() {
             {/* Main Headline */}
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
-                Know who to ask before you push.
+                Know what to review before you push.
               </h1>
 
               <p className="text-lg text-gray-600 leading-relaxed">
-                Git knows what changed. We find what it impacts and who owns it.
+                Git knows what changed. CodeRisk adds coupling, co-change history, tests, and ownership context.
               </p>
             </div>
 
@@ -56,9 +48,9 @@ export default function Home() {
             <div className="space-y-3">
               <div className="bg-[#1a1a1a] rounded-lg p-4 font-mono text-sm inline-block">
                 <span className="text-gray-500">$</span>
-                <span className="text-white ml-2">pip install crisk</span>
+                <span className="text-white ml-2">git clone https://github.com/rohankatakam/coderisk.git</span>
                 <button
-                  onClick={() => navigator.clipboard.writeText('pip install crisk')}
+                  onClick={() => navigator.clipboard.writeText('git clone https://github.com/rohankatakam/coderisk.git')}
                   className="ml-4 text-gray-500 hover:text-white transition-colors"
                   title="Copy to clipboard"
                 >
@@ -68,14 +60,14 @@ export default function Home() {
                 </button>
               </div>
               <p className="text-sm text-gray-500">
-                Or: <code className="bg-gray-100 px-2 py-1 rounded text-xs">uv pip install crisk</code>
+                Then: <code className="bg-gray-100 px-2 py-1 rounded text-xs">cd coderisk &amp;&amp; make build</code>
               </p>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex gap-4 items-center">
-              <a href="https://calendly.com/rohankatakam" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-[#0F172A] text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-[#1e293b] transition-all">
-                Book a Demo
+              <a href="https://github.com/rohankatakam/coderisk" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-[#0F172A] text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-[#1e293b] transition-all">
+                View on GitHub
               </a>
               <a href="https://rohankatakam.substack.com/p/the-ai-accelerated-bottleneck" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center text-[#0F172A] px-6 py-3 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-all">
                 Read Thesis
@@ -93,16 +85,16 @@ export default function Home() {
         <div className="mt-24 pt-12 border-t border-gray-100">
           <div className="grid grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-3xl font-bold text-[#0F172A]">Semantic</div>
-              <div className="text-sm text-gray-500 mt-1">Finds related files by meaning, not imports</div>
+              <div className="text-3xl font-bold text-[#0F172A]">Impact</div>
+              <div className="text-sm text-gray-500 mt-1">Surfaces dependencies and historical co-change</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-[#0F172A]">Ownership</div>
-              <div className="text-sm text-gray-500 mt-1">Routes to the right person via git blame</div>
+              <div className="text-sm text-gray-500 mt-1">Shows who has worked in the area before</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-[#0F172A]">Draft</div>
-              <div className="text-sm text-gray-500 mt-1">Generates context-aware Slack messages</div>
+              <div className="text-3xl font-bold text-[#0F172A]">Evidence</div>
+              <div className="text-sm text-gray-500 mt-1">Explains risk with tests, history, and incidents</div>
             </div>
           </div>
         </div>
@@ -113,14 +105,14 @@ export default function Home() {
         {/* Simple CTA */}
         <div className="mt-24 pt-16 border-t border-gray-100 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Stop interrupting. Start shipping.
+            Review changes with repository evidence.
           </h2>
           <p className="text-gray-600 mb-8 max-w-xl mx-auto">
-            Everyone builds tools to search code. We built a tool that talks to the people who wrote it.
+            CodeRisk is a source-built prototype for inspecting code-change risk before review.
           </p>
           <div className="flex gap-4 justify-center">
-            <a href="https://calendly.com/rohankatakam" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-[#0F172A] text-white px-8 py-4 rounded-lg text-base font-semibold hover:bg-[#1e293b] transition-all">
-              Book a Demo
+            <a href="https://github.com/rohankatakam/coderisk" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-[#0F172A] text-white px-8 py-4 rounded-lg text-base font-semibold hover:bg-[#1e293b] transition-all">
+              Read the README
             </a>
             <a href="mailto:rohan@coderisk.dev" className="inline-flex items-center justify-center border border-gray-300 text-[#0F172A] px-8 py-4 rounded-lg text-base font-semibold hover:bg-gray-50 transition-all">
               Contact Us
@@ -132,7 +124,7 @@ export default function Home() {
         <footer className="mt-24 pt-8 border-t border-gray-100">
           <div className="flex justify-center items-center">
             <div className="text-sm text-gray-400">
-              © 2025 CodeRisk. All rights reserved.
+              © 2026 CodeRisk. MIT licensed.
             </div>
           </div>
         </footer>

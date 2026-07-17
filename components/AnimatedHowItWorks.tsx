@@ -15,7 +15,7 @@ export default function AnimatedHowItWorks() {
             How It Works
           </h2>
           <p className="text-base text-[#475569] max-w-xl mx-auto">
-            One command. Instant context.
+            One command turns indexed repository history into review context.
           </p>
         </div>
 
